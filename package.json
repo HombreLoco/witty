@@ -22,9 +22,7 @@
     "node-sass-middleware": "^0.9.8",
     "nodemon": "^1.11.0",
     "pg": "^6.0.2"
-<<<<<<< HEAD
-=======
->>>>>>> 08cebfc1540dd9167ee0d01eb29b56e9fc9ae410
+
   },
   "devDependencies": {
     "nodemon": "^1.9.2"
