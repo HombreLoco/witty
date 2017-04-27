@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- external css -->
+  <link rel="stylesheet" href="vendor/normalize-4.1.1.css">
+  <link rel="stylesheet" href="vendor/bootstrap.min.css ">
+  <link rel="stylesheet" href="vendor/dropzone.css ">
+
+  <!-- witty css -->
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/nav.css">
+
+  <title>Witty Smarties</title>
+</head>
+
+<body>
+
+  <h1 class="imghead">Show • Share • Inspire</h1>
+
+  <nav class="navbar navbar-default">
+
+    <div class="navbar-header">
+
+      <!-- create the humbuger button -->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#humbugerMenu" aria-expanded="false">
+        <!-- <span class="sr-only">Toggle Menu</span> -->
+        <!-- sr-only span -->
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="#" class="navbar-brand">Witty Smarties</a>
+    </div>
+
+    <!-- nav bar for desktop and mobile -->
+    <div class="collapse navbar-collapse" id="humbugerMenu">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Register</a></li>
+        <li><a href="#">Log In</a></li>
+        <li><a href="#">Create Witties</a></li>
+      </ul>
+      <!-- ul "nav navbar-nav" -->
+    </div>
+    <!-- class="collapse" -->
+
+  </nav>
+<main>
+    <section class="row">
+      <div class="col-xs-12 col-md-12 col-lg-12">
+
+        <div>
+          <!-- Create deck elements go here -->
+          <form method="post" action="/user/upload" class="dropzone">
+            <input type="file" name="file" />
+          </form>
+        </div>
+
+      </div>
+    </section>
+    <!-- row -->
+</main>
+
+  <!-- external scripts -->
+  <script src="vendor/jquery-3.0.0.js"></script>
+  <script src="vendor/bootstrap.min.js"></script>
+  <script src="vendor/dropzone.js"></script>
+
+</body>
+
+</html>
