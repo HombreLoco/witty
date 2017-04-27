@@ -1,5 +1,5 @@
 exports.up = function(knex, Promise) {
-return CreateSlidesTable();
+return CreateUserDeckScoreTable();
   // .then(CreateDeckSlidesTable)
   // .then(CreateAnswerTable)
   // .then(CreateGenreTable)
@@ -9,7 +9,8 @@ return CreateSlidesTable();
 
 
   function CreateUserDeckScoreTable() {
-    return knex.schema.createTable('userDeckScore', function (table) {
+    return knex.schema.createTable('userdeckscore', function (table) {
+      table.increments('id');
       table.integer('deckId');
       table.integer('userId');
       table.integer('correctAnswerCount');
@@ -86,5 +87,5 @@ return CreateSlidesTable();
 
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('slides');
+  return knex.schema.dropTableIfExists('userdeckscore');
 };
