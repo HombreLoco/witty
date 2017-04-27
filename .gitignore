@@ -60,3 +60,5 @@ typings/
 # settings for database connection
 settings.json
 
+# .DS_Store file
+.DS_Store
