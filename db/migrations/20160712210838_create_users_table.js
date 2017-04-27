@@ -1,15 +1,16 @@
 exports.up = function(knex, Promise) {
-return CreateUserDeckScoreTable()
+return CreateUserDeckScoreTable();
   // .then(CreateDeckSlidesTable)
-  .then(CreateAnswerTable)
-  .then(CreateGenreTable)
-  .then(CreateUserTable)
-  .then(CreateDeckTable)
-  .then(CreateSlidesTable);
+  // .then(CreateAnswerTable)
+  // .then(CreateGenreTable)
+  // .then(CreateUserTable)
+  // .then(CreateDeckTable)
+  // .then(CreateSlidesTable);
 
 
   function CreateUserDeckScoreTable() {
-    return knex.schema.createTable('userDeckScore', function (table) {
+    return knex.schema.createTable('userdeckscore', function (table) {
+      table.increments('id');
       table.integer('deckId');
       table.integer('userId');
       table.integer('correctAnswerCount');
@@ -78,7 +79,6 @@ return CreateUserDeckScoreTable()
       table.dateTime('createDate');
       table.dateTime('updateDate');
       table.string('pictureUrl');
-      table.string('correctAnswer').notNullable();
       table.foreign('genreId').references('genre.id');
       table.foreign('deckId').references('deck.id');
     });
@@ -87,5 +87,5 @@ return CreateUserDeckScoreTable()
 
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('users');
+  return knex.schema.dropTableIfExists('userdeckscore');
 };
