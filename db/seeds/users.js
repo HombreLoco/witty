@@ -1,10 +1,10 @@
 exports.seed = function(knex, Promise) {
-  // return seedAnswerTable();
-  // return seedSlidesTable();
-  return seedUserDeckScoreTable();
-  // return seedDeckTable();
-  // return seedGenreTable();
   // return seedUserTable();
+  // return seedGenreTable();
+  // return seedDeckTable();
+  // return seedSlidesTable();
+  // return seedAnswerTable();
+  // return seedUserDeckScoreTable();
 
 
 function seedUserTable () {
@@ -33,9 +33,9 @@ function seedUserTable () {
     return knex('deck').del()
       .then(function () {
         return Promise.all([
-          knex('deck').insert({name: 'Deck1', userId: 14, genreId: 1, createDate: '2016-06-01 04:05:06 -5:00'}),
-          knex('deck').insert({name: 'Deck2', userId: 15, genreId: 2, createDate: '2016-06-01 04:05:06 -5:00'}),
-          knex('deck').insert({name: 'Deck3', userId: 16, genreId: 3, createDate: '2016-06-01 04:05:06 -5:00'})
+          knex('deck').insert({name: 'Deck1', userId: 1, genreId: 1, createDate: '2016-06-01 04:05:06 -5:00'}),
+          knex('deck').insert({name: 'Deck2', userId: 2, genreId: 2, createDate: '2016-06-01 04:05:06 -5:00'}),
+          knex('deck').insert({name: 'Deck3', userId: 3, genreId: 3, createDate: '2016-06-01 04:05:06 -5:00'})
         ]);
       });
   }
@@ -45,9 +45,9 @@ function seedUserTable () {
     return knex('slides').del()
       .then(function () {
         return Promise.all([
-          knex('slides').insert({question: 'Question1', genreId: 1, deckId: 14, pictureUrl: 'there'}),
-          knex('slides').insert({question: 'Question2', genreId: 2, deckId: 15, pictureUrl: 'here'}),
-          knex('slides').insert({question: 'Question3', genreId: 3, deckId: 16, pictureUrl: 'overThere'})
+          knex('slides').insert({question: 'Question1', genreId: 1, deckId: 6, pictureUrl: 'there'}),
+          knex('slides').insert({question: 'Question2', genreId: 2, deckId: 7, pictureUrl: 'here'}),
+          knex('slides').insert({question: 'Question3', genreId: 3, deckId: 8, pictureUrl: 'overThere'})
         ]);
       });
   }
@@ -68,9 +68,9 @@ function seedUserTable () {
     return knex('userdeckscore').del()
       .then(function () {
         return Promise.all([
-          knex('userdeckscore').insert({userId: 14, correctAnswerCount: 5,  deckId: 14}),
-          knex('userdeckscore').insert({userId: 15, correctAnswerCount: 9, deckId: 15}),
-          knex('userdeckscore').insert({userId: 16, correctAnswerCount: 7, deckId: 16})
+          knex('userdeckscore').insert({userId: 1, correctAnswerCount: 5,  deckId: 6}),
+          knex('userdeckscore').insert({userId: 2, correctAnswerCount: 9, deckId: 7}),
+          knex('userdeckscore').insert({userId: 3, correctAnswerCount: 7, deckId: 8})
         ]);
       });
   }
