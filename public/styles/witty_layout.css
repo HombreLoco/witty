@@ -10,6 +10,8 @@
   body {
       /*background-color: #EEE;*/
       background-color: #000;
+      font-family: 'Baloo', cursive;
+      font-family: 'PT Sans', sans-serif;
   }
 
   body h1 {
@@ -19,4 +21,3 @@
   main {
       position: relative;
   }
-
