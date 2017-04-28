@@ -16,6 +16,7 @@ const knexLogger = require('knex-logger');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
+const decksRoutes = require("./routes/decks");
 
 // Witty requires
 const fs = require('fs.extra')
@@ -42,6 +43,7 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
+app.use("/api/decks", decksRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {

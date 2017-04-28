@@ -1,10 +1,10 @@
 exports.seed = function(knex, Promise) {
-  // return seedAnswerTable();
-  // return seedSlidesTable();
-  return seedUserDeckScoreTable();
-  // return seedDeckTable();
-  // return seedGenreTable();
   // return seedUserTable();
+  // return seedGenreTable();
+  // return seedDeckTable();
+  // return seedSlidesTable();
+  return seedAnswerTable();
+  // return seedUserDeckScoreTable();
 
 
 function seedUserTable () {
@@ -46,6 +46,7 @@ function seedUserTable () {
       .then(function () {
         return Promise.all([
           knex('slides').insert({question: 'Question1', genreId: 1, deckId: 14, pictureUrl: 'there'}),
+          knex('slides').insert({question: 'Question4', genreId: 1, deckId: 14, pictureUrl: 'over'}),
           knex('slides').insert({question: 'Question2', genreId: 2, deckId: 15, pictureUrl: 'here'}),
           knex('slides').insert({question: 'Question3', genreId: 3, deckId: 16, pictureUrl: 'overThere'})
         ]);
@@ -56,10 +57,14 @@ function seedUserTable () {
     return knex('answer').del()
       .then(function () {
         return Promise.all([
-          knex('answer').insert({answer: 'answer1', correctAnswer: 'false', slideId: 1}),
-          knex('answer').insert({answer: 'answer2', correctAnswer: 'true', slideId: 1}),
-          knex('answer').insert({answer: 'answer3', correctAnswer: 'false', slideId: 1}),
-          knex('answer').insert({answer: 'answer4', correctAnswer: 'false', slideId: 1})
+          knex('answer').insert({answer: 'answer1', correctAnswer: 'false', slideId: 4, deckId: 14}),
+          knex('answer').insert({answer: 'answer2', correctAnswer: 'true', slideId: 4, deckId: 14}),
+          knex('answer').insert({answer: 'answer3', correctAnswer: 'false', slideId: 4, deckId: 14}),
+          knex('answer').insert({answer: 'answer4', correctAnswer: 'false', slideId: 4, deckId: 14}),
+          knex('answer').insert({answer: 'answer1', correctAnswer: 'false', slideId: 5, deckId: 14}),
+          knex('answer').insert({answer: 'answer2', correctAnswer: 'true', slideId: 5, deckId: 14}),
+          knex('answer').insert({answer: 'answer3', correctAnswer: 'false', slideId: 5, deckId: 14}),
+          knex('answer').insert({answer: 'answer4', correctAnswer: 'false', slideId: 5, deckId: 14})
         ]);
       });
   }
