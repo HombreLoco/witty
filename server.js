@@ -20,6 +20,7 @@ const usersRoutes = require("./routes/users");
 // Witty requires
 const fs = require('fs.extra')
 const fileUpload = require('express-fileupload');
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -46,6 +47,17 @@ app.use("/api/users", usersRoutes(knex));
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+app.get("/register", (req, res) => {
+  console.log(`Hello World!`)
+  res.render("register");
+});
+
+app.post("/register", (req, res) => {
+  console.log(`Hello World! Put`)
+console.log(req.body.first)
+  // res.render("test");
 });
 
 // user drag and drop upload

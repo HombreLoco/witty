@@ -4,36 +4,36 @@
     margin: auto;
     background-position: bottom center;
     background-size: cover;
-    height: 250px;
+    height: 4.5em;
     color: #ffffff;
-    padding-top: 3.5em;
+    padding-top: 2.5em;
     padding-left: .5em;
     font-size: 3.5em;
     text-shadow: 4px 4px 5px #000;
 }
 
-.navbar-default {
-    border: none;
-    background-color: rgba(240, 240, 240, .8);
+.navbar {
+    z-index: 100;
+    background-color: rgba(240, 240, 240, .9);
 }
 
-@media (min-width: 370px) {
+@media (min-width: 369px) {
     .imghead {
-        background-image: url('/images/PartyGroup02.jpg');
+        /*background-image: url('/images/PartyGroup02.jpg');*/
         opacity: .7;
-        height: 150px;
-        padding-top: 3em;
+        height: 4em;
+        padding-top: 2em;
         padding-left: .5em;
         font-size: 2.2em;
         text-shadow: 3px 3px 3px #000;
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 987px) {
     .imghead {
         background-image: url('/images/PartyGroup02.jpg');
         opacity: .7;
-        height: 300px;
+        height: 4.5em;
         padding-top: 3em;
         padding-left: .5em;
         font-size: 5em;
@@ -47,12 +47,12 @@
     }
 }
 
-@media (min-width: 1190px) {
+@media (min-width: 1196px) {
     .imghead {
         opacity: .75;
         background-position: center;
-        height: 380px;
-        padding-top: 3.5em;
+        height: 5.5em;
+        padding-top: 3.8em;
         padding-left: .5em;
         font-size: 5em;
         text-shadow: 5px 5px 5px #000;
