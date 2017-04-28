@@ -8,7 +8,6 @@ return CreateAnswerTable();
 //   .then(CreateDeckTable)
 //   .then(CreateSlidesTable);
 
-  // .then(CreateDeckSlidesTable)
 
   function CreateUserDeckScoreTable() {
     return knex.schema.createTable('userdeckscore', function (table) {
@@ -90,9 +89,5 @@ return CreateAnswerTable();
 
 
 exports.down = function(knex, Promise) {
-<<<<<<< HEAD
   return knex.schema.dropTableIfExists('answer');
-=======
-  return knex.schema.dropTableIfExists('usersdeckscore');
->>>>>>> 2e732f62d491354b2ce3e464f80d6f2e66847c93
 };

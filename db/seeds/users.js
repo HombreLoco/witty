@@ -34,6 +34,9 @@ exports.seed = function(knex, Promise) {
     return knex('deck').del()
       .then(function() {
         return Promise.all([
+          knex('deck').insert({name: 'Deck1', userId: 1, genreId: 1, createDate: '2016-06-01 04:05:06 -5:00'}),
+          knex('deck').insert({name: 'Deck2', userId: 2, genreId: 2, createDate: '2016-06-01 04:05:06 -5:00'}),
+          knex('deck').insert({name: 'Deck3', userId: 3, genreId: 3, createDate: '2016-06-01 04:05:06 -5:00'}),
           knex('deck').insert({ name: 'Deck1', userId: 1, genreId: 1, createDate: '2016-06-01 04:05:06 -5:00' }),
           knex('deck').insert({ name: 'Deck2', userId: 2, genreId: 2, createDate: '2016-06-01 04:05:06 -5:00' }),
           knex('deck').insert({ name: 'Deck3', userId: 3, genreId: 3, createDate: '2016-06-01 04:05:06 -5:00' })
@@ -46,16 +49,16 @@ exports.seed = function(knex, Promise) {
     return knex('slides').del()
       .then(function() {
         return Promise.all([
-<<<<<<< HEAD
           knex('slides').insert({question: 'Question1', genreId: 1, deckId: 14, pictureUrl: 'there'}),
           knex('slides').insert({question: 'Question4', genreId: 1, deckId: 14, pictureUrl: 'over'}),
           knex('slides').insert({question: 'Question2', genreId: 2, deckId: 15, pictureUrl: 'here'}),
-          knex('slides').insert({question: 'Question3', genreId: 3, deckId: 16, pictureUrl: 'overThere'})
-=======
+          knex('slides').insert({question: 'Question3', genreId: 3, deckId: 16, pictureUrl: 'overThere'}),
+          knex('slides').insert({question: 'Question1', genreId: 1, deckId: 6, pictureUrl: 'there'}),
+          knex('slides').insert({question: 'Question2', genreId: 2, deckId: 7, pictureUrl: 'here'}),
+          knex('slides').insert({question: 'Question3', genreId: 3, deckId: 8, pictureUrl: 'overThere'}),
           knex('slides').insert({ question: 'Question1', genreId: 1, deckId: 1, pictureUrl: 'there' }),
           knex('slides').insert({ question: 'Question2', genreId: 2, deckId: 2, pictureUrl: 'here' }),
           knex('slides').insert({ question: 'Question3', genreId: 3, deckId: 3, pictureUrl: 'overThere' })
->>>>>>> 2e732f62d491354b2ce3e464f80d6f2e66847c93
         ]);
       });
   }
@@ -64,7 +67,6 @@ exports.seed = function(knex, Promise) {
     return knex('answer').del()
       .then(function() {
         return Promise.all([
-<<<<<<< HEAD
           knex('answer').insert({answer: 'answer1', correctAnswer: 'false', slideId: 4, deckId: 14}),
           knex('answer').insert({answer: 'answer2', correctAnswer: 'true', slideId: 4, deckId: 14}),
           knex('answer').insert({answer: 'answer3', correctAnswer: 'false', slideId: 4, deckId: 14}),
@@ -73,12 +75,10 @@ exports.seed = function(knex, Promise) {
           knex('answer').insert({answer: 'answer2', correctAnswer: 'true', slideId: 5, deckId: 14}),
           knex('answer').insert({answer: 'answer3', correctAnswer: 'false', slideId: 5, deckId: 14}),
           knex('answer').insert({answer: 'answer4', correctAnswer: 'false', slideId: 5, deckId: 14})
-=======
           knex('answer').insert({ answer: 'answer1', correctAnswer: 'false', slideId: 1 }),
           knex('answer').insert({ answer: 'answer2', correctAnswer: 'true', slideId: 1 }),
           knex('answer').insert({ answer: 'answer3', correctAnswer: 'false', slideId: 1 }),
           knex('answer').insert({ answer: 'answer4', correctAnswer: 'false', slideId: 1 })
->>>>>>> 2e732f62d491354b2ce3e464f80d6f2e66847c93
         ]);
       });
   }
@@ -87,6 +87,9 @@ exports.seed = function(knex, Promise) {
     return knex('userdeckscore').del()
       .then(function() {
         return Promise.all([
+          knex('userdeckscore').insert({userId: 1, correctAnswerCount: 5,  deckId: 6}),
+          knex('userdeckscore').insert({userId: 2, correctAnswerCount: 9, deckId: 7}),
+          knex('userdeckscore').insert({userId: 3, correctAnswerCount: 7, deckId: 8}),
           knex('userdeckscore').insert({ userId: 1, correctAnswerCount: 5, deckId: 1 }),
           knex('userdeckscore').insert({ userId: 2, correctAnswerCount: 9, deckId: 2 }),
           knex('userdeckscore').insert({ userId: 3, correctAnswerCount: 7, deckId: 3 })
