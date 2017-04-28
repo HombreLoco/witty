@@ -1,0 +1,202 @@
+.theDeck {
+    position: relative;
+    top: -1.5em;
+    /*width: 80%;*/
+    height: 100em;
+    margin-left: 8%;
+    margin-right: 8%;
+    background-color: #222;
+}
+
+.theDeck h3 {
+    position: relative;
+    top: -.8em;
+    padding-top: .5em;
+    height: 2.5em;
+    margin-bottom: 1%;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+}
+
+.theDeck textarea {
+    border-radius: 1em;
+}
+
+.theSlide {
+    opacity: .9;
+    position: relative;
+    /*top: 1em;*/
+    width: 97%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+    border-radius: 2em;
+    background-color: white;
+    padding-top: 1em;
+    height: 28.5em;
+}
+
+.dropzone {
+    border-radius: 1em;
+    position: relative;
+    top: -1em;
+}
+
+.theSlide textarea {
+    border-radius: 1em;
+    margin-bottom: 1.8em;
+}
+
+.correctAnswer {
+    padding-top: .2em;
+}
+
+.correctAnswer button {
+    border-radius: 1em;
+    margin-bottom: 2em;
+    margin-left: -1.25em;
+}
+
+.slideControl {
+    position: relative;
+}
+
+.slideControl button {
+    position: relative;
+}
+
+@media (min-width: 368px) {
+    .theDeck {
+        height: 100em;
+        margin-left: 2%;
+        margin-right: 2%;
+        background-color: #222;
+    }
+    .theDeck h3 {
+        font-size: 2em;
+        height: 3em;
+        border-bottom-left-radius: 1em;
+        border-bottom-right-radius: 1em;
+    }
+    .theSlide {
+        width: 94%;
+        padding-top: 1em;
+        height: 46em;
+    }
+    .dropzone {
+        border-radius: 1em;
+        position: relative;
+        top: .2em;
+    }
+    .theSlide textarea {
+        border-radius: 1em;
+        margin-bottom: .5em;
+    }
+    .correctAnswer {
+        position: relative;
+        left: -1.8em;
+        padding-top: .4em;
+    }
+    .correctAnswer button {
+        border-radius: 1em;
+        margin-left: 1%;
+        margin-bottom: .75em;
+    }
+    .slideControl {
+        /*margin-left: 5%;*/
+        width: 100%;
+        bottom: -6%;
+    }
+    .slideControl button {
+        left: 6%;
+        /*width: 25%;*/
+        bottom: 2.5em;
+        height: 4em;
+        border-top-left-radius: 1.5em;
+        border-top-right-radius: 1.5em;
+        border-bottom-right-radius: .75em;
+        border-bottom-left-radius: .75em;
+    }
+}
+
+@media (min-width: 765px) {
+    .theSlide {
+        height: 29.25em;
+    }
+    .correctAnswer {
+        position: relative;
+        left: -.8em;
+        padding-top: .2em;
+    }
+    .correctAnswer button {
+        border-radius: 1em;
+        margin-bottom: .75em;
+        margin-left: .25em;
+        margin-bottom: 2.25em;
+    }
+    .theSlide textarea {
+        border-radius: 1em;
+        margin-bottom: 2.25em;
+    }
+    .slideControl {
+        bottom: 0%;
+    }
+    .slideControl button {
+        width: 9em;
+        left: 1.5em;
+
+        bottom: 1.8em;
+        border-bottom-right-radius: .5em;
+        border-bottom-left-radius: .5em;
+    }
+}
+
+@media (min-width: 987px) {
+    .theSlide {
+        height: 28.75em;
+    }
+    .correctAnswer button {
+        border-radius: 1em;
+        margin-bottom: .75em;
+        margin-left: 1em;
+        margin-bottom: 2em;
+    }
+    .slideControl button {
+        height: 3em;
+        left: 1em;
+        width: 12em;
+        bottom: 1.25em;
+    }
+}
+
+@media (min-width: 1196px) {
+    .theSlide {
+        height: 28.75em;
+    }
+    .correctAnswer button {
+        border-radius: 1em;
+        margin-bottom: .75em;
+        margin-left: -.6em;
+        margin-bottom: 2em;
+    }
+    .slideControl button {
+        position: relative;
+        left: 2.5em;
+        width: 14em;
+        margin-top: .5em;
+        bottom: 1.75em;
+    }
+}
+
+@media (min-width: 1870px) {
+    .slideControl button {
+        position: relative;
+        left: 3.5em;
+        width: 22em;
+        margin-top: .5em;
+        bottom: 1.75em;
+    }
+    .theSlide {
+        height: 28.75em;
+    }
+}

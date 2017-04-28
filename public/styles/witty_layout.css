@@ -1,0 +1,22 @@
+  .affix {
+      top: 0;
+      width: 100%;
+  }
+
+  .affix + .container-fluid {
+      padding-top: 70px;
+  }
+
+  body {
+      /*background-color: #EEE;*/
+      background-color: #000;
+  }
+
+  body h1 {
+      color: #244751;
+  }
+
+  main {
+      position: relative;
+  }
+
