@@ -1,4 +1,5 @@
 .imghead {
+    font-family: 'Baloo', cursive;
     background-image: url('/images/PartyGroup02.jpg');
     opacity: .7;
     margin: auto;
@@ -13,19 +14,20 @@
 }
 
 .navbar {
+      font-family: 'PT Sans', sans-serif;
+font-size: 1.25em;
     z-index: 100;
     background-color: rgba(240, 240, 240, .9);
 }
 
 @media (min-width: 369px) {
     .imghead {
-        /*background-image: url('/images/PartyGroup02.jpg');*/
-        opacity: .7;
-        height: 4em;
-        padding-top: 2em;
-        padding-left: .5em;
-        font-size: 2.2em;
+        background-image: url('/images/PartyGroup02.jpg');
+        font-size: 2.5em;
         text-shadow: 3px 3px 3px #000;
+    }
+        .nav > li {
+        position: static !important;
     }
 }
 
