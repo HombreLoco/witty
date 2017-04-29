@@ -9,7 +9,7 @@ $( document ).ready(function() {
 
   $("#submitLoginInfo").on("click", function(event) {
     event.preventDefault();
-    if ($("#email").val() === "" || $("#password").val() === "") {
+    if ($("#loginemail").val() === "" || $("#loginpassword").val() === "") {
       $("#error").text("Please make sure you entered all details correctly!").fadeIn().delay(5000).fadeOut();
       return;
     }

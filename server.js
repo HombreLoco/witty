@@ -18,6 +18,9 @@ const knexLogger      = require('knex-logger');
 const usersRoutes     = require("./routes/users");
 const decksRoutes     = require("./routes/decks");
 
+//Password hashing require
+const bcrypt          = require('bcrypt');
+
 // Witty requires
 const fs              = require('fs.extra')
 const fileUpload      = require('express-fileupload');
