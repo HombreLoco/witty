@@ -6,12 +6,12 @@ const randomize = require('randomatic');
 
 module.exports = (knex) => {
 
-  // make this grab three random decks, returning only the deckId and first
-  // picture to display as clickable icon
+  // this grabs three random decks (their name and id) to be displayed
+  // on the frontend for users to select from
   router.get("/", (req, res) => {
-    knex.select("deck.genreId", "deck.name", "deck.id")
-    .from("deck")
+    knex.select("deck.name", "deck.id").from("deck").orderByRaw("RANDOM()").limit(3)
     .then((results) => {
+      console.log("results", results);
       res.json(results);
     })
   });

@@ -12,6 +12,7 @@ return CreateUserDeckScoreTable()
       table.increments('id');
       table.integer('deckId');
       table.integer('userId');
+      table.dateTime('playDate');
       table.integer('correctAnswerCount');
     });
   }
