@@ -2,20 +2,23 @@
 
 .theDeck {
     position: relative;
-    top: -1.5em;
+    top: -3em;
     overflow: auto;
     margin-left: 8%;
     margin-right: 8%;
     background-color: #222;
 }
 
-.theDeck h3 {
+.makeTitle {
     font-family: 'Baloo', cursive;
+    position: fixed;
     top: -.8em;
+    width: 100%;
     height: 2.5em;
     margin-bottom: 1%;
     border-bottom-left-radius: 1em;
     border-bottom-right-radius: 1em;
+    z-index: 100;
 }
 
 .theDeck textarea {
@@ -25,13 +28,26 @@
 
 /* P-l-a-y  D-e-c-k */
 
-.theDeck h1 {
+.playTitle {
     font-family: 'Baloo', cursive;
-    position: relative;
-    overflow: auto;
-    min-height: 1em;
+    position: static;
+    font-size: 2em;
+    width: 100%;
+    z-index: 1;
+    margin-bottom: 1%;
     border-bottom-left-radius: 1em;
     border-bottom-right-radius: 1em;
+}
+
+.playTitileAffix {
+    position: fixed;
+    overflow: auto;
+    opacity: .9;
+    top: 32px;
+    font-size: 1.5em;
+    padding-right: 1.5em;
+    width: 100%;
+    left: .75em;
 }
 
 
@@ -58,7 +74,7 @@
     position: relative;
     overflow: auto;
     top: 9em;
-    margin-bottom: 1em;
+    margin-top: 1.5em;
     border-radius: 2em;
     background-color: white;
     padding-top: 1em;
@@ -86,7 +102,6 @@
     font-family: 'PT Sans', sans-serif;
     position: relative;
     overflow: auto;
-    min-height: 1em;
 }
 
 
@@ -144,22 +159,28 @@
         margin-right: 2%;
         background-color: #222;
     }
-    .theDeck h3 {
+    .makeTitle {
         font-size: 2.5em;
         height: 4em;
         padding-top: .5em;
     }
     /* P-l-a-y  D-e-c-k */
-    .theDeck h1 {
-        font-size: 2.5em;
-        top: -.6em;
-        margin-bottom: 1%;
-        padding-top: 8%;
-        padding-bottom: 8%;
+    .playTitle {
+        position: static;
+        padding-top: 5%;
+        padding-bottom: 4%;
         padding-left: 5%;
         padding-right: 5%;
-        border-bottom-left-radius: 1em;
-        border-bottom-right-radius: 1em;
+    }
+    .playTitileAffix {
+        position: fixed;
+        overflow: auto;
+        opacity: .9;
+        top: 32px;
+        font-size: 1.5em;
+        padding-right: 1.5em;
+        width: 100%;
+        left: .75em;
     }
     .theSlide {
         width: 94%;
@@ -198,7 +219,6 @@
     /* p-l-a-y  a-n-s-w-e-r */
     .playSlide h5 {
         font-size: 1.75em;
-        min-height: 3em;
         padding-top: 5%;
         margin-top: 10%;
         margin-bottom: 5%;
@@ -237,7 +257,7 @@
 
 @media (min-width: 765px) {
     /* M-a-k-e  D-e-c-k */
-    .theDeck h3 {
+    .makeTitle {
         font-size: 2em;
         height: 3em;
         padding-top: 1em;
@@ -246,12 +266,17 @@
         border-bottom-right-radius: 1em;
     }
     /* P-l-a-y  D-e-c-k */
-    .theDeck h1 {
+    .playTitle {
         font-size: 3em;
-        top: -.7em;
-        padding-top: .5em;
-        border-bottom-left-radius: 1em;
-        border-bottom-right-radius: 1em;
+        padding-top: 3%;
+        padding-bottom: 2%;
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+    .playTitileAffix {
+        font-size: 1.75em;
+        width: 100%;
+        left: .6em;
     }
     .theSlide {
         height: 29.25em;
@@ -277,7 +302,6 @@
         margin-bottom: 2.25em;
     }
     .playSlide h5 {
-        min-height: 3em;
         padding-top: 2%;
         margin-top: 3%;
         margin-bottom: 1%;
@@ -312,11 +336,22 @@
         height: 28.75em;
     }
     /* P-l-a-y  D-e-c-k */
-    .theDeck h1 {
-        top: -.7em;
-        padding-left: 3%;
-        padding-top: .7em;
-        min-height: 3em;
+    .playTitle {
+        position: static;
+        overflow: auto;
+        font-size: 3em;
+        width: 100%;
+        padding-top: 5%;
+        padding-bottom: 4%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .playTitileAffix {
+        position: fixed;
+        font-size: 2em;
+        padding-right: 1em;
+        width: 100%;
+        left: .5em;
     }
     /* p-l-a-y q-u-e-s-t-i-o-n */
     .playSlide h4 {
@@ -347,12 +382,19 @@
         height: 28.75em;
     }
     /* P-l-a-y  D-e-c-k */
-    .theDeck h1 {
-        font-size: 4em;
+    .playTitle {
+        font-size: 3em;
         top: -.7em;
         padding-left: 3%;
         padding-top: .7em;
-        min-height: 3em;
+    }
+    .playTitileAffix {
+        position: fixed;
+        top: 32px;
+        font-size: 2em;
+        padding-right: 1em;
+        width: 100%;
+        left: .5em;
     }
     /* p-l-a-y q-u-e-s-t-i-o-n */
     .playSlide h4 {
@@ -394,12 +436,20 @@
         padding-top: 5% min-height: 100vh;
     }
     /* P-l-a-y  D-e-c-k */
-    .theDeck h1 {
+    .playTitle {
         font-size: 4em;
         top: -.7em;
         padding-left: 3%;
         padding-top: .7em;
         min-height: 3em;
+    }
+    .playTitileAffix {
+        position: fixed;
+        top: 32px;
+        font-size: 2em;
+        padding-right: 1em;
+        width: 100%;
+        left: .5em;
     }
     /* p-l-a-y q-u-e-s-t-i-o-n */
     .playSlide h4 {
@@ -410,7 +460,6 @@
     /* p-l-a-y  a-n-s-w-e-r */
     .playSlide h5 {
         font-size: 2em;
-        min-height: .75em;
         padding-top: 1%;
         margin-top: 1%;
         margin-bottom: 2%;
