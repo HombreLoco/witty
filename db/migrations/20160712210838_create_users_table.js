@@ -32,8 +32,8 @@ return CreateUserDeckScoreTable()
   function CreateAnswerTable() {
     return knex.schema.createTable('answer', function (table) {
       table.increments('id');
-      table.integer('slideId');
-      table.integer('deckId');
+      table.integer('deckId').notNullable();
+      table.string('slideAnswerId').notNullable();
       table.string('answer').notNullable();
       table.boolean('correctAnswer').notNullable();
       table.integer('effect');
@@ -66,8 +66,9 @@ return CreateUserDeckScoreTable()
     return knex.schema.createTable('slides', function (table) {
       table.increments('id');
       table.string('question').notNullable();
-      table.integer('genreId').notNullable();
+      table.integer('genreId');
       table.integer('deckId').notNullable();
+      table.string('slideAnswerId').notNullable();
       table.dateTime('createDate');
       table.dateTime('updateDate');
       table.string('pictureUrl');

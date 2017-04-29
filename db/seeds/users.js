@@ -45,10 +45,10 @@ exports.seed = function(knex, Promise) {
     return knex('slides').del()
       .then(function() {
         return Promise.all([
-          knex('slides').insert({question: 'Question1', genreId: 1, deckId: 1, pictureUrl: 'over'}),
-          knex('slides').insert({question: 'Question2', genreId: 1, deckId: 1, pictureUrl: 'here'}),
-          knex('slides').insert({question: 'Question3', genreId: 2, deckId: 2, pictureUrl: 'overThere'}),
-          knex('slides').insert({question: 'Question4', genreId: 3, deckId: 3, pictureUrl: 'overThere'})
+          knex('slides').insert({question: 'Question1', genreId: 1, deckId: 1, pictureUrl: 'over', slideAnswerId: "UWl7bbg.p~=Wm^R"}),
+          knex('slides').insert({question: 'Question2', genreId: 1, deckId: 1, pictureUrl: 'here', slideAnswerId: "hM$QScVm}EUoJ-E"}),
+          knex('slides').insert({question: 'Question3', genreId: 2, deckId: 2, pictureUrl: 'overThere', slideAnswerId: "$,rrkcV0U@I3R}."}),
+          knex('slides').insert({question: 'Question4', genreId: 3, deckId: 3, pictureUrl: 'overThere', slideAnswerId: "BQz2a-$+%CzlYvV"})
         ]);
       });
   }
@@ -57,14 +57,14 @@ exports.seed = function(knex, Promise) {
     return knex('answer').del()
       .then(function() {
         return Promise.all([
-          knex('answer').insert({answer: 'answer1', correctAnswer: 'false', slideId: 1, deckId: 1}),
-          knex('answer').insert({answer: 'answer2', correctAnswer: 'true', slideId: 1, deckId: 1}),
-          knex('answer').insert({answer: 'answer3', correctAnswer: 'false', slideId: 1, deckId: 1}),
-          knex('answer').insert({answer: 'answer4', correctAnswer: 'false', slideId: 1, deckId: 1}),
-          knex('answer').insert({answer: 'answer1', correctAnswer: 'false', slideId: 2, deckId: 1}),
-          knex('answer').insert({answer: 'answer2', correctAnswer: 'true', slideId: 2, deckId: 1}),
-          knex('answer').insert({answer: 'answer3', correctAnswer: 'false', slideId: 2, deckId: 1}),
-          knex('answer').insert({answer: 'answer4', correctAnswer: 'false', slideId: 2, deckId: 1})
+          knex('answer').insert({answer: 'answer1', correctAnswer: 'false', deckId: 1, slideAnswerId: "UWl7bbg.p~=Wm^R"}),
+          knex('answer').insert({answer: 'answer2', correctAnswer: 'true', deckId: 1, slideAnswerId: "UWl7bbg.p~=Wm^R"}),
+          knex('answer').insert({answer: 'answer3', correctAnswer: 'false', deckId: 1, slideAnswerId: "UWl7bbg.p~=Wm^R"}),
+          knex('answer').insert({answer: 'answer4', correctAnswer: 'false', deckId: 1, slideAnswerId: "UWl7bbg.p~=Wm^R"}),
+          knex('answer').insert({answer: 'answer1', correctAnswer: 'false', deckId: 1, slideAnswerId: "hM$QScVm}EUoJ-E"}),
+          knex('answer').insert({answer: 'answer2', correctAnswer: 'true', deckId: 1, slideAnswerId: "hM$QScVm}EUoJ-E"}),
+          knex('answer').insert({answer: 'answer3', correctAnswer: 'false', deckId: 1, slideAnswerId: "hM$QScVm}EUoJ-E"}),
+          knex('answer').insert({answer: 'answer4', correctAnswer: 'false', deckId: 1, slideAnswerId: "hM$QScVm}EUoJ-E"})
         ]);
       });
   }
