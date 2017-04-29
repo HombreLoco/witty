@@ -10,6 +10,7 @@ module.exports = (knex) => {
       .insert({userid: req.body.userid,
                deckid:  req.body.deckid,
                correctanswercount: req.body.correctanswercount
+               // add createDate
       })
       .then(() => {
         res.redirect("/");

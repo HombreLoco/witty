@@ -2,25 +2,38 @@
 
 require('dotenv').config();
 // Lighthouse boiler plates
-const PORT = process.env.PORT || 8080;
-const ENV = process.env.ENV || "development";
-const express = require("express");
-const bodyParser = require("body-parser");
-const sass = require("node-sass-middleware");
-const app = express();
+const PORT            = process.env.PORT || 8080;
+const ENV             = process.env.ENV || "development";
+const express         = require("express");
+const bodyParser      = require("body-parser");
+const sass            = require("node-sass-middleware");
+const app             = express();
 
-const knexConfig = require("./knexfile");
-const knex = require("knex")(knexConfig[ENV]);
-const morgan = require('morgan');
-const knexLogger = require('knex-logger');
+const knexConfig      = require("./knexfile");
+const knex            = require("knex")(knexConfig[ENV]);
+const morgan          = require('morgan');
+const knexLogger      = require('knex-logger');
 
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
-const decksRoutes = require("./routes/decks");
+const usersRoutes     = require("./routes/users");
+const decksRoutes     = require("./routes/decks");
 
 // Witty requires
-const fs = require('fs.extra')
-const fileUpload = require('express-fileupload');
+const fs              = require('fs.extra')
+const fileUpload      = require('express-fileupload');
+
+//FB Login requires
+const passport        = require("passport")
+, FacebookStrategy    = require("passport-facebook").Strategy;
+
+//Cookie Session requires
+let cookieSession     = require('cookie-session');
+
+app.use(cookieSession ({
+  name: "session",
+  keys: ["keys1", "keys2"]
+}))
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -56,9 +69,10 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
+
 app.post("/register", (req, res) => {
   console.log(`Hello World! Put`)
-console.log(req.body.first)
+  console.log(req.body.first)
   // res.render("test");
 });
 
@@ -73,6 +87,38 @@ app.post('/user/upload', (req, res) => {
   });
 });
 
+
+//facebook login
+passport.use(new FacebookStrategy({
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
+
+app.get('/auth/facebook',
+  passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+
+// Port stuff
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
+
+
+
+
+
+
