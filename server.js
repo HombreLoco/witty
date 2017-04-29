@@ -51,16 +51,16 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/register", (req, res) => {
-  console.log(`Hello World!`)
-  res.render("register");
-});
+// app.get("/register", (req, res) => {
+//   console.log(`Hello World!`)
+//   res.render("register");
+// });
 
-app.post("/register", (req, res) => {
-  console.log(`Hello World! Put`)
-console.log(req.body.first)
-  // res.render("test");
-});
+// app.post("/register", (req, res) => {
+//   console.log(`Hello World! Put`)
+// console.log(req.body.first)
+//   // res.render("test");
+// });
 
 // user drag and drop upload
 app.post('/user/upload', (req, res) => {
