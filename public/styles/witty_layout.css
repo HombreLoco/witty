@@ -1,3 +1,8 @@
+  html {
+          font-family: 'Baloo', cursive;
+      font-family: 'PT Sans', sans-serif;
+  }
+/*
   .affix {
       top: 0;
       width: 100%;
@@ -6,6 +11,8 @@
   .affix + .container-fluid {
       padding-top: 70px;
   }
+
+*/
 
   body {
       /*background-color: #EEE;*/
@@ -19,4 +26,3 @@
   main {
       position: relative;
   }
-
