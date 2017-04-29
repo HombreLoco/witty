@@ -25,14 +25,16 @@
 <body>
 
   <div id="fb-root"></div>
-    <script>(function(d, s, id) {
+  <script>
+  (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
+    js = d.createElement(s);
+    js.id = id;
     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=422181911483394";
     fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-    </script>
+  }(document, 'script', 'facebook-jssdk'));
+  </script>
 
   <!-- Bootstrap elements contained here -->
   <div class="container-fluid ">
@@ -76,7 +78,7 @@
       <section class="theDeck">
 
         <head>
-          <h1 class="col-xs-12 col-md-12 col-lg-12 text-primary bg-primary playTitle">World Cup 2018, 2022, 2026, 2032, 2036, 2040 and 2044 witty challenge</h1>
+          <h5 class="col-xs-12 col-md-12 col-lg-12 text-primary bg-primary playTitle">World Cup 2018, 2022, 2026, 2032, 2036, 2040 and 2044 witty challenge</h1>
         </head>
         <!-- All the play slides inside this bootstrap container -->
         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -100,7 +102,7 @@
             </div>
 
             <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3 text-primary">
-              <button class="btn btn-success btn-lg">Select</button>
+              <button class="btn btn-success btn-lg"  id="choice1">Select</button>
             </div>
 
             <!-- answer #2 and correct button -->
@@ -133,6 +135,8 @@
               <button class="btn btn-success btn-lg">Select</button>
             </div>
             <!-- end of T-h-e  a-n-s-w-e-r-s -->
+
+            <button class="btn btn-info btn-lg scoreButton">Get World Score</button>
 
           </div>
           <!-- end of Play slide -->

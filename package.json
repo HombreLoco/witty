@@ -26,7 +26,7 @@
     "node-sass-middleware": "^0.9.8",
     "nodemon": "^1.11.0",
     "passport": "^0.3.2",
-    "passport-facebook": "file:passport-facebook",
+    "passport-facebook": "^2.1.1",
     "pg": "^6.0.2"
   },
   "devDependencies": {
