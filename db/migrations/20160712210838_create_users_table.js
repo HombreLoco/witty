@@ -1,12 +1,10 @@
 exports.up = function(knex, Promise) {
-return CreateAnswerTable();
-
-// CreateUserDeckScoreTable()
-//   .then(CreateUserTable)
-//   .then(CreateAnswerTable)
-//   .then(CreateGenreTable)
-//   .then(CreateDeckTable)
-//   .then(CreateSlidesTable);
+return CreateUserDeckScoreTable()
+.then(CreateUserTable)
+.then(CreateAnswerTable)
+.then(CreateGenreTable)
+.then(CreateDeckTable)
+.then(CreateSlidesTable);
 
 
   function CreateUserDeckScoreTable() {
@@ -17,13 +15,6 @@ return CreateAnswerTable();
       table.integer('correctAnswerCount');
     });
   }
-
-  // function CreateDeckSlidesTable() {
-  //   return knex.schema.createTable('deckSlides', function (table) {
-  //     table.integer('deckId');
-  //     table.integer('slideId');
-  //   });
-  // }
 
   function CreateUserTable() {
     return knex.schema.createTable('users', function (table) {
@@ -52,7 +43,6 @@ return CreateAnswerTable();
   function CreateGenreTable() {
     return knex.schema.createTable('genre', function (table) {
       table.increments('id');
-      // table.foreign('id').references('deck.genreId', 'slides.genreId');
       table.string('name').notNullable();
       table.text('description').notNullable();
     });
@@ -89,5 +79,36 @@ return CreateAnswerTable();
 
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('answer');
+  return dropSlides()
+  .then(dropDeck)
+  .then(dropGenre)
+  .then(dropAnswer)
+  .then(dropUsers)
+  .then(dropUserDeckScore);
+
+  function dropSlides() {
+    return knex.schema.dropTableIfExists('slides')
+  }
+
+  function dropDeck() {
+    return knex.schema.dropTableIfExists('deck')
+  }
+
+  function dropGenre() {
+    return knex.schema.dropTableIfExists('genre')
+  }
+
+  function dropAnswer() {
+    return knex.schema.dropTableIfExists('answer')
+  }
+
+  function dropUsers() {
+    return knex.schema.dropTableIfExists('users')
+  }
+
+  function dropUserDeckScore() {
+    return knex.schema.dropTableIfExists('userdeckscore')
+  }
+
+
 };
