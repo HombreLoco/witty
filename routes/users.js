@@ -2,7 +2,7 @@
 
 const express         = require('express');
 const router          = express.Router();
-const bcrypt          = require('bcrypt');
+// const bcrypt          = require('bcrypt');
 
 module.exports = (knex, cookieSession) => {
 
@@ -52,7 +52,7 @@ module.exports = (knex, cookieSession) => {
           if(bcrypt.compareSync(req.body.loginpassword, results[0].password)) {
             res.redirect("/");
           } else {
-            res.status(400).json({ error: 'invalid details'}); //print error message on registration page
+            res.status(400).json({ error: 'invalid details'});
           }
         }
       })

@@ -20,7 +20,7 @@ module.exports = (knex) => {
   // route to get single deck and slides from database
   router.get("/:id", (req, res) => {
     let fullDeck = {};
-    knex.select("deck.genreId", "deck.name", "deck.id")
+    knex.select("deck.name", "deck.id")
     .from("deck")
     .where("id", parseInt(req.params.id))
     .then(function(deck) {
@@ -46,13 +46,35 @@ module.exports = (knex) => {
         fullDeck.slides[slideIndex].answers = [];
         answers.forEach(function(answerValue, answerIndex) {
           if (slideValue.slideAnswerId === answerValue.slideAnswerId) {
+            answerValue.correctAnswer = answerValue.correctAnswer.toString();
+            console.log("correct: ", typeof answerValue.correctAnswer);
             fullDeck.slides[slideIndex].answers.push(answerValue);
           }
         })
       })
+      console.log(fullDeck);
+      renderSlides(fullDeck);
       res.json(fullDeck);
     })
   });
+
+  function renderSlides(deck) {
+  // let ans = [];
+  // let corAns = [];
+  // let pic = [];
+  // let ques = [];
+  for (var i = 0; i < deck.slides.length; i++) {
+    var o = deck.slides[i];
+    console.log("OOOOOOOOOOO: ", o)
+    // createSlide(o);
+    //   pic.push(deck.slides[i].pictureURL);
+    //   ques.push(deck.slides[i].question);
+    // for (var x = 0; x < o.answers.length; x++) {
+    //   ans = o.answers[x].answer;
+    //   corAns = o.answers[x].correctAnswer;
+    // }
+  }
+}
 
 
   // save a new deck to the database

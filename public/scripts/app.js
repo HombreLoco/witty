@@ -15,6 +15,54 @@ $( document ).ready(function() {
   //   });
   // });
 
+  function createSlide(slides) {
+    console.log("what");
+    console.log(slides);
+    return    `<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="playSlide">
+              <h4>${slides.question}</h4>
+              <div class="col-xs-12 col-md-6 col-sm-10 col-lg-5 text-primary">
+                <img src="${slides.pictureUrl}" alt="">
+              </div>
+              <div class="col-xs-12 col-md-9 col-sm-9 col-lg-9 text-primary">
+                <h5 data-answer="${slides.answers[0].correct}"> ${slides.answers[0].answer} </h5>
+              </div>
+              <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3 text-primary">
+                <button class="btn btn-success btn-lg">Select</button>
+              </div>
+              <div class="col-xs-12 col-md-9 col-sm-9 col-lg-9 text-primary">
+                <h5 data-answer="${slides.answers[1].correct}"> ${slides.answers[1].answer} </h5>
+              </div>
+              <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3 text-primary">
+                <button class="btn btn-success btn-lg">Select</button>
+              </div>
+              <div class="col-xs-12 col-md-9 col-sm-9 col-lg-9 text-primary">
+                <h5 data-answer="${slides.answers[2].correct}"> ${slides.answers[2].answer} </h5>
+              </div>
+              <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3 text-primary">
+                <button class="btn btn-success btn-lg">Select</button>
+              </div>
+              <div class="col-xs-12 col-md-9 col-sm-9 col-lg-9 text-primary">
+                <h5 data-answer="${slides.answers[3].correct}"> ${slides.answers[3].answer} </h5>
+              </div>
+              <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3 text-primary">
+                <button class="btn btn-success btn-lg">Select</button>
+              </div>
+            </div>`;
+  }
+
+
+  function renderSlides(deck) {
+    let deckName = `<header>
+          <h1 class="col-xs-12 col-md-12 col-lg-12 text-primary bg-primary playTitle">${deck.name}</h1>
+        </header>`;
+        $("#theDeck").append(deckName);
+    for (var i = 0; i < deck.slides.length; i++) {
+      var o = deck.slides[i];
+      let newSlide = createSlide(o);
+      $("#theDeck").append(newSlide);
+    }
+  }
 
   // get all decks from the database
   $(() => {
@@ -34,11 +82,12 @@ $( document ).ready(function() {
   // get a single deck from the database
   $(() => {
     let deckIDID = 1;
+    let deckIDID = 43;
     $.ajax({
       method: "GET",
       url: `/api/decks/${deckIDID}`
-    }).done((decks) => {
-        console.log(decks);
+    }).done((deck) => {
+      renderSlides(deck);
     });
   });
 

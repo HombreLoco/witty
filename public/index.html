@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="styles/witty_layout.css">
   <link rel="stylesheet" href="styles/nav.css">
   <link rel="stylesheet" href="styles/theDeck.css">
+  <link rel="stylesheet" href="styles/home.css">
 
   <!-- witty fonts -->
   <link href="https://fonts.googleapis.com/css?family=Baloo|PT+Sans" rel="stylesheet">
@@ -25,14 +26,9 @@
 <body>
 
   <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=422181911483394";
-    fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-    </script>
+  <script>
+
+  </script>
 
   <!-- Bootstrap elements contained here -->
   <div class="container-fluid ">
@@ -71,71 +67,18 @@
 
     <main>
 
+
+
       <!-- ***** Play the deck here ******-->
 
-      <section class="theDeck">
+      <section id="theDeck" class="theDeck">
 
-        <head>
-          <h1 class="col-xs-12 col-md-12 col-lg-12 text-primary bg-primary playTitle">World Cup 2018, 2022, 2026, 2032, 2036, 2040 and 2044 witty challenge</h1>
-        </head>
+
         <!-- All the play slides inside this bootstrap container -->
-        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-          <!-- Play slide -->
-          <div class="playSlide">
 
-            <!-- the play question -->
-            <h4>Where will the 2018 world cup take place?</h4>
 
-            <!-- user uploaded media -->
-            <div class="col-xs-12 col-md-6 col-sm-10 col-lg-5 text-primary">
-              <img src="/userUpload/WorldCup01.jpg" alt="">
-            </div>
-
-            <!-- T-h-e  a-n-s-w-e-r-s -->
-            <!-- answer #1 and correct button -->
-            <div class="col-xs-12 col-md-9 col-sm-9 col-lg-9 text-primary">
-
-              <h5>Must be somewhere that we can drink a lot of beer, smoke a lot of weed and party all day all night.</h5>
-            </div>
-
-            <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3 text-primary">
-              <button class="btn btn-success btn-lg">Select</button>
-            </div>
-
-            <!-- answer #2 and correct button -->
-            <div class="col-xs-12 col-md-9 col-sm-9 col-lg-9 text-primary">
-
-              <h5>Germany</h5>
-            </div>
-
-            <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3 text-primary">
-              <button class="btn btn-success btn-lg">Select</button>
-            </div>
-
-            <!-- answer #3 and correct button -->
-            <div class="col-xs-12 col-md-9 col-sm-9 col-lg-9 text-primary">
-
-              <h5>Somewhere warm and near the beach with lots of friendly locals.</h5>
-            </div>
-
-            <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3 text-primary">
-              <button class="btn btn-success btn-lg">Select</button>
-            </div>
-
-            <!-- answer #4 and correct button -->
-            <div class="col-xs-12 col-md-9 col-sm-9 col-lg-9 text-primary">
-
-              <h5>May be in Hong Kong where the shopping is, or in Paris where the fashion is, or New York where the money is, or in Shangai where the yuumy foods are or Amsterdam where the hotties are.</h5>
-            </div>
-
-            <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3 text-primary">
-              <button class="btn btn-success btn-lg">Select</button>
-            </div>
-            <!-- end of T-h-e  a-n-s-w-e-r-s -->
-
-          </div>
-          <!-- end of Play slide -->
+<!-- Ziad takes the above -->
 
           <!-- winner effect 1 -->
           <div class="playSlide">
@@ -181,111 +124,28 @@
               <p>10 pushups please.</p>
             </div>
           </div>
+      <!-- category # 1-->
+      <section class="category">
 
-          <!-- loser effect 3 -->
-          <div class="playSlide">
-            <div class="winner">
-              <img src="loserEffect/3.gif" class="img-responsive center-block" alt="winner1">
-              <p>The right answer is (x).</p>
-              <p>I don't get it!!</p>
-            </div>
+        <div class="row" id="cat1">
+          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ">
+            <img class="cat_thumb img-responsive center-block" src="images/worldSection.jpg" alt="">
+            <h4 class="cat_title">World Event Smarties</h4>
           </div>
 
         </div>
-        <!-- end of BootStrap column -->
+        <!-- end of cat1 row -->
 
       </section>
-      <!-- end of deck -->
+      <!-- end of category #1 -->
+      <div class="clearfix"></div>
 
-      <!-- User play / create deck starts here -->
+
+
+
+      <!-- ***** Play the deck here ******-->
+
       <section class="theDeck">
-
-        <head class="makeTitle">
-          <h3 class="col-xs-12 col-md-12 col-lg-12 text-primary bg-info">Create Your Witty Challenge here</h3>
-        </head>
-
-        <div class="container">
-          <div class="row">
-            <div class="form-group col-xs-10 col-md-10 col-lg-10">
-              <textarea class="form-control" rows="2" maxlength="300" placeholder="Your witty challenge title here."></textarea>
-            </div>
-          </div>
-
-        </div>
-        <!-- class="container" -->
-
-        <!-- Create each slide -->
-        <div class="theSlide">
-
-          <div class="form-group col-xs-12 col-sm-5 col-md-5 col-lg-6">
-
-            <!-- the question -->
-            <textarea class="form-control" rows="6" maxlength="300" placeholder="Your witty question goes here"></textarea>
-
-            <!-- Drag and drop area -->
-            <form class="dropzone" method="post" action="/user/upload">
-              <input type="file" name="file" />
-            </form>
-
-          </div>
-
-          <div class="form-group col-xs-9 col-md-5 col-sm-5 col-lg-5">
-
-            <!-- the answers -->
-            <textarea class="form-control" rows="2" id="question" maxlength="50" placeholder="Answer #1 goes here"></textarea>
-
-            <textarea class="form-control" rows="2" id="question" maxlength="50" placeholder="Answer #2 goes here"></textarea>
-
-            <textarea class="form-control" rows="2" id="question" maxlength="50" placeholder="Answer #3 goes here"></textarea>
-
-            <textarea class="form-control" rows="2" id="question" maxlength="50" placeholder="Answer #4 goes here"></textarea>
-          </div>
-
-          <!-- buttons for correct answers -->
-          <div class="correctAnswer col-xs-1 col-md-1 col-sm-1 col-lg-1">
-            <button class="btn btn-success btn-lg">Correct</button>
-
-            <button class="btn btn-success btn-lg">Correct</button>
-
-            <button class="btn btn-success btn-lg">Correct</button>
-
-            <button class="btn btn-success btn-lg">Correct</button>
-          </div>
-
-          <!-- slide controls -->
-          <div class="slideControl hidden-xs">
-            <!-- bootstrap button bar -->
-            <div class="btn-toolbar" role="toolbar" aria-label="...">
-              <div class="btn-group" role="group" aria-label="...">
-                <button class="btn btn-info btn-lg">New Slide</button>
-                <button class="btn btn-info btn-lg">Delete</button>
-                <button class="btn btn-info btn-lg">Save</button>
-                <button class="btn btn-info btn-lg">Share now</button>
-              </div>
-            </div>
-            <!-- end of button bar -->
-          </div>
-          <!-- end of slideControl -->
-
-          <!-- slide controls mobile-->
-          <div class="slideControl visible-xs">
-            <!-- bootstrap button bar -->
-            <div class="btn-toolbar" role="toolbar" aria-label="...">
-              <div class="btn-group" role="group" aria-label="...">
-                <button class="btn btn-info btn-lg">New
-                  <br>Slide</button>
-                <button class="btn btn-info btn-lg">Delete</button>
-                <button class="btn btn-info btn-lg">Save</button>
-                <button class="btn btn-info btn-lg">Share
-                  <br>now</button>
-              </div>
-            </div>
-            <!-- end of button bar -->
-          </div>
-          <!-- end of slideControl -->
-
-        </div>
-        <!-- end of the slide -->
 
       </section>
       <!-- end of deck -->
@@ -299,6 +159,7 @@
   <script src="vendor/jquery-3.0.0.js"></script>
   <script src="vendor/bootstrap.min.js"></script>
   <script src="vendor/dropzone.js"></script>
+  <!-- <script src="scripts/fb_logIn.js"></script> -->
   <script src="scripts/home.js"></script>
   <script src="scripts/app.js"></script>
 
