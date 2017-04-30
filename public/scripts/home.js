@@ -13,7 +13,7 @@ $(document).ready(function() {
 
   ]
 
-
+  const score = []
 
   // sticky menu
   const $playTitle = $('.playTitle')
@@ -28,19 +28,17 @@ $(document).ready(function() {
   const $cat1 = $('#cat1')
   makeDeckThumbs($cat1, decks)
   loadDeck = loadDeckWith($main)
-  // choice a deck to play
+    // choice a deck to play
   $main.on('click', loadDeck)
-
-
-
 
   // ********local functions*******
 
   function loadDeckWith($main) {
+
     return function(e) {
-      console.log(e.target)
-      alert(`Please give me the deck with id: ${e.target.id}`)
+      score.push(e.target.id)
     }
+
   }
 
   function makeDeckThumbs($cat1, decks) {
