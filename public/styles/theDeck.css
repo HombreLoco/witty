@@ -186,7 +186,7 @@
         position: fixed;
         overflow: auto;
         opacity: .9;
-        top: 40px;
+        top: 26px;
         font-size: 1em;
         padding-right: 1.5em;
         width: 100%;
@@ -291,7 +291,7 @@
     .playTitileAffix {
         font-size: 1.25em;
         width: 100%;
-        top: 40px;
+        top: 28px;
         height: 7%;
         left: .75em;
     }
@@ -372,7 +372,7 @@
         font-size: 1.25em;
         padding-right: 1em;
         width: 100%;
-        left: .5em;
+        left: .75em;
     }
     /* p-l-a-y q-u-e-s-t-i-o-n */
     .playSlide h4 {
@@ -413,7 +413,7 @@
     }
     .playTitileAffix {
         position: fixed;
-        top: 42px;
+        top: 32px;
         font-size: 1.25em;
         padding-right: 1em;
         width: 100%;
@@ -470,7 +470,7 @@
     }
     .playTitileAffix {
         position: fixed;
-        top: 40px;
+        top: 32px;
         font-size: 1.25em;
         padding-right: 1em;
         height: 5%;

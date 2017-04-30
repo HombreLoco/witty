@@ -16,6 +16,8 @@
 .navbar {
     font-family: 'PT Sans', sans-serif;
     font-size: 1.25em;
+    position: static;
+    top: 340px;
     z-index: 100;
     background-color: rgba(240, 240, 240, .9);
 }
@@ -64,7 +66,7 @@
     .imghead {
         opacity: .75;
         background-position: center;
-        height: 5.5em;
+        height: 5em;
         padding-top: 3.8em;
         padding-left: .5em;
         font-size: 5em;
@@ -76,4 +78,5 @@
     .navbar-brand {
         padding-left: 2.5em;
     }
+
 }
