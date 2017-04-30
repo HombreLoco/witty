@@ -25,28 +25,28 @@ $( document ).ready(function() {
                 <img src="${slides.pictureUrl}" alt="">
               </div>
               <div class="col-xs-12 col-md-9 col-sm-9 col-lg-9 text-primary">
-                <h5 data-answer="${slides.answers[0].correct}"> ${slides.answers[0].answer} </h5>
+                <h5> ${slides.answers[0].answer} </h5>
               </div>
               <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3 text-primary">
-                <button class="btn btn-success btn-lg">Select</button>
+                <button class="btn btn-success btn-lg" id="${slides.answers[0].id}" data-answer="${slides.answers[0].correctAnswer}">Select</button>
               </div>
               <div class="col-xs-12 col-md-9 col-sm-9 col-lg-9 text-primary">
-                <h5 data-answer="${slides.answers[1].correct}"> ${slides.answers[1].answer} </h5>
+                <h5> ${slides.answers[1].answer} </h5>
               </div>
               <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3 text-primary">
-                <button class="btn btn-success btn-lg">Select</button>
+                <button class="btn btn-success btn-lg" id="${slides.answers[1].id}" data-answer="${slides.answers[1].correctAnswer}">Select</button>
               </div>
               <div class="col-xs-12 col-md-9 col-sm-9 col-lg-9 text-primary">
-                <h5 data-answer="${slides.answers[2].correct}"> ${slides.answers[2].answer} </h5>
+                <h5> ${slides.answers[2].answer} </h5>
               </div>
               <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3 text-primary">
-                <button class="btn btn-success btn-lg">Select</button>
+                <button class="btn btn-success btn-lg" id="${slides.answers[2].id}" data-answer="${slides.answers[2].correctAnswer}">Select</button>
               </div>
               <div class="col-xs-12 col-md-9 col-sm-9 col-lg-9 text-primary">
-                <h5 data-answer="${slides.answers[3].correct}"> ${slides.answers[3].answer} </h5>
+                <h5> ${slides.answers[3].answer} </h5>
               </div>
               <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3 text-primary">
-                <button class="btn btn-success btn-lg">Select</button>
+                <button class="btn btn-success btn-lg" id="${slides.answers[3].id}" data-answer="${slides.answers[3].correctAnswer}">Select</button>
               </div>
             </div>`;
   }
@@ -59,6 +59,7 @@ $( document ).ready(function() {
         $("#theDeck").append(deckName);
     for (var i = 0; i < deck.slides.length; i++) {
       var o = deck.slides[i];
+      console.log("ooooooo", o.answers);
       let newSlide = createSlide(o);
       $("#theDeck").append(newSlide);
     }
@@ -72,8 +73,7 @@ $( document ).ready(function() {
     }).done((decks) => {
       console.log(decks);
       for(deck of decks) {
-        $("<div>").text(deck.name).appendTo($("body"));
-        $("<br>").appendTo($("body"));
+
       }
     })
   });
@@ -90,6 +90,26 @@ $( document ).ready(function() {
       renderSlides(deck);
     });
   });
+
+  //Event listener for the buttons on slides
+  $(".theDeck").on("click", function(e) {
+    event.stopPropagation();
+    console.log("1");
+    if (e.target.id =='') {
+      return
+    }
+    console.log(typeof e.target.dataset.answer);
+    console.log("2");
+    console.log(e.target.dataset.answer);
+    // event.stopPropagation();
+
+    if(e.target.dataset.answer === "true") {
+      alert("Corrrect Answer!" + 'clicked id: ' + e.target.id);
+    } else {
+      alert("Wrong Answer :(");
+    }
+    // alert("the target" + e.target.id);
+  })
 
 
   // save a deck to the database
