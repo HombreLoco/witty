@@ -57,6 +57,7 @@ return CreateUserDeckScoreTable()
       table.integer('userId').notNullable();
       table.dateTime('createDate').notNullable();
       table.dateTime('updateDate');
+      table.string('pictureUrl');
       table.integer('genreId');
       table.foreign('genreId').references('genre.id');
       table.foreign('userId').references('users.id');

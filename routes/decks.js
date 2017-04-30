@@ -9,7 +9,7 @@ module.exports = (knex) => {
   // this grabs three random decks (their name and id) to be displayed
   // on the frontend for users to select from
   router.get("/", (req, res) => {
-    knex.select("deck.name", "deck.id").from("deck").orderByRaw("RANDOM()").limit(3)
+    knex.select("deck.name", "deck.id", "deck.pictureUrl").from("deck").orderByRaw("RANDOM()").limit(3)
     .then((results) => {
       console.log("results", results);
       res.json(results);
@@ -24,7 +24,6 @@ module.exports = (knex) => {
     .from("deck")
     .where("id", parseInt(req.params.id))
     .then(function(deck) {
-      fullDeck.genreId = deck[0].genreId;
       fullDeck.name = deck[0].name;
       fullDeck.id = deck[0].id;
       return knex.select("slides.slideAnswerId", "slides.question", "slides.pictureUrl")
@@ -59,6 +58,7 @@ module.exports = (knex) => {
   // save a new deck to the database
   router.post("/", (req, res) => {
     let deckObj = req.body;
+    let deckPicUrl = deckObj.slides[0].pictureUrl;
     deckObj.slides.forEach(function(value, index) {
       value.slideAnswerId = randomize('Aa0!', 15);
       value.answers.forEach(function(aValue, aIndex) {
@@ -67,7 +67,7 @@ module.exports = (knex) => {
     })
     knex("deck")
     .returning(["id", "createDate"])
-    .insert({name: deckObj.name, userId: deckObj.userId, createDate: new Date()})
+    .insert({name: deckObj.name, userId: deckObj.userId, createDate: new Date(), pictureUrl: deckPicUrl})
     .then(function(theDeckId) {
       let deckSlides = [];
       deckObj.slides.forEach(function(value, index) {
@@ -90,6 +90,7 @@ module.exports = (knex) => {
       knex.batchInsert("answer", slideAnswers)
       .then(function(ids) { })
       .catch(function(error) { });
+      res.status(201).send();
     })
   });
 

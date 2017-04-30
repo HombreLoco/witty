@@ -4,7 +4,7 @@ const express         = require('express');
 const router          = express.Router();
 const bcrypt          = require('bcrypt');
 
-module.exports = (knex) => {
+module.exports = (knex, cookieSession) => {
 
   // router.get("/", (req, res) => {
   //   knex
@@ -21,6 +21,7 @@ module.exports = (knex) => {
       return;
     }
     knex('users')
+    .returning('id')
     .insert({  firstname: req.body.firstname,
                lastname: req.body.lastname,
                email: req.body.email,
@@ -28,7 +29,9 @@ module.exports = (knex) => {
                createDate: new Date(),
                cookie: "cookie"
              })
-    .then(() => {
+    .then((userId) => {
+      req.session.userId = userId;
+      req.session.firstname = req.body.firstname;
       res.redirect("/");
     });
   });
@@ -40,7 +43,7 @@ module.exports = (knex) => {
       }
       knex('users').where({
         email: req.body.loginemail,
-      }).select('firstname', 'password')
+      }).select('id', 'firstname', 'password')
       .then((results) => {
         //print hello (name). on test page results[0].firstname
         if(results.length === 0){

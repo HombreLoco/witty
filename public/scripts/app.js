@@ -2,18 +2,18 @@ $( document ).ready(function() {
     console.log( "ready!" );
 
   // get all users from
-  $(() => {
-    $.ajax({
-      method: "GET",
-      url: "/api/users"
-    }).done((users) => {
-      for(user of users) {
-        $("<div>").text(user.firstname).appendTo($("body"));
-        $("<div>").text(user.lastname).appendTo($("body"));
-        $("<br>").appendTo($("body"));
-      }
-    });
-  });
+  // $(() => {
+  //   $.ajax({
+  //     method: "GET",
+  //     url: "/api/users"
+  //   }).done((users) => {
+  //     for(user of users) {
+  //       $("<div>").text(user.firstname).appendTo($("body"));
+  //       $("<div>").text(user.lastname).appendTo($("body"));
+  //       $("<br>").appendTo($("body"));
+  //     }
+  //   });
+  // });
 
 
   // get all decks from the database
@@ -33,7 +33,7 @@ $( document ).ready(function() {
 
   // get a single deck from the database
   $(() => {
-    let deckIDID = 4;
+    let deckIDID = 1;
     $.ajax({
       method: "GET",
       url: `/api/decks/${deckIDID}`
@@ -90,4 +90,29 @@ $( document ).ready(function() {
       datatype: 'json'
     })
   })
+
+
+  // save score data for a single play and return world score information
+  $(() => {
+    let scoreObj = {};
+    scoreObj.userId = 1;
+    scoreObj.deckId = 1;
+    scoreObj.correctAnswerCount = 3;
+
+    $.ajax({
+      method: "POST",
+      url: `/api/score`,
+      data: scoreObj,
+      datatype: 'json'
+    }).done((score) => {
+        console.log("score: ", score);
+    });
+  });
+
+
+
+
+
+
+
 });

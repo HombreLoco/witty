@@ -33,9 +33,9 @@ exports.seed = function(knex, Promise) {
     return knex('deck').del()
       .then(function() {
         return Promise.all([
-          knex('deck').insert({name: 'Deck1', userId: 1, genreId: 1, createDate: '2016-06-01 04:05:06 -5:00'}),
-          knex('deck').insert({name: 'Deck2', userId: 2, genreId: 2, createDate: '2016-06-01 04:05:06 -5:00'}),
-          knex('deck').insert({name: 'Deck3', userId: 3, genreId: 3, createDate: '2016-06-01 04:05:06 -5:00'})
+          knex('deck').insert({name: 'Deck1', userId: 1, genreId: 1, createDate: '2016-06-01 04:05:06 -5:00', pictureUrl: 'over'}),
+          knex('deck').insert({name: 'Deck2', userId: 2, genreId: 2, createDate: '2016-06-01 04:05:06 -5:00', pictureUrl: 'over'}),
+          knex('deck').insert({name: 'Deck3', userId: 3, genreId: 3, createDate: '2016-06-01 04:05:06 -5:00', pictureUrl: 'over'})
         ]);
       });
   }
@@ -74,6 +74,8 @@ exports.seed = function(knex, Promise) {
       .then(function() {
         return Promise.all([
           knex('userdeckscore').insert({ userId: 1, correctAnswerCount: 5, deckId: 1 }),
+          knex('userdeckscore').insert({ userId: 1, correctAnswerCount: 7, deckId: 1 }),
+          knex('userdeckscore').insert({ userId: 1, correctAnswerCount: 10, deckId: 1 }),
           knex('userdeckscore').insert({ userId: 2, correctAnswerCount: 9, deckId: 2 }),
           knex('userdeckscore').insert({ userId: 3, correctAnswerCount: 7, deckId: 3 })
         ]);

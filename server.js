@@ -17,6 +17,7 @@ const knexLogger      = require('knex-logger');
 // Seperated Routes for each Resource
 const usersRoutes     = require("./routes/users");
 const decksRoutes     = require("./routes/decks");
+const scoreRoutes     = require("./routes/score");
 
 //Password hashing require
 const bcrypt          = require('bcrypt');
@@ -59,8 +60,9 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/api/users", usersRoutes(knex));
+app.use("/api/users", usersRoutes(knex, cookieSession));
 app.use("/api/decks", decksRoutes(knex));
+app.use("/api/score", scoreRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
