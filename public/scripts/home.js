@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+
+
   const htmlWinner = [`
       <div class="answerEffect" id="winner1">
                 <img src="winnerEffect/1.gif" class="img-responsive center-block" alt="winner1">
