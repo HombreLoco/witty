@@ -82,7 +82,6 @@ $( document ).ready(function() {
   // get a single deck from the database
   $(() => {
     let deckIDID = 1;
-    let deckIDID = 43;
     $.ajax({
       method: "GET",
       url: `/api/decks/${deckIDID}`
