@@ -25,7 +25,7 @@
 .navbarAffix {
     position: fixed;
     overflow: auto;
-    opacity: .9;
+    opacity: .95;
     top: 0;
     font-size: 1em;
     width: 100%;
