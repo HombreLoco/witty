@@ -9,7 +9,7 @@ module.exports = (knex) => {
   // this grabs three random decks (their name and id) to be displayed
   // on the frontend for users to select from
   router.get("/", (req, res) => {
-    knex.select("deck.name", "deck.id", "deck.pictureUrl").from("deck").orderByRaw("RANDOM()").limit(3)
+    knex.select("deck.name", "deck.id", "deck.pictureUrl").from("deck").orderByRaw("RANDOM()").limit()
     .then((results) => {
       console.log("results", results);
       res.json(results);

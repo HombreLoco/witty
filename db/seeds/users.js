@@ -1,10 +1,10 @@
 exports.seed = function(knex, Promise) {
-  // return seedUserTable()
-  // .then(seedGenreTable)
-  // .then(seedDeckTable)
-   return seedAnswerTable();
-  // .then(seedSlidesTable)
-  // .then(seedUserDeckScoreTable);
+  return seedUserTable()
+  .then(seedGenreTable)
+  .then(seedDeckTable)
+  .then(seedSlidesTable)
+  .then(seedAnswerTable)
+  .then(seedUserDeckScoreTable);
 
 
   function seedUserTable() {

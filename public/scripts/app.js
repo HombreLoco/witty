@@ -32,30 +32,30 @@ const htmlWinner = [`
   `
       <div class="answerEffect" id="winner3">
         <img src="winnerEffect/3.gif" class="img-responsive center-block" alt="winner1">
-        <p>That is correct.</p>
-        <p>Wow! Is Witty your middle name?!!</p>
+        <p>Wow!</p>
+        <p>Is Witty your middle name?!!</p>
       </div>`
 ]
 
 const htmlloser = [`
       <div class="answerEffect" id="loser1">
         <img src="loserEffect/1.gif" class="img-responsive center-block" alt="winner1">
-        <p>Hmmm...the right answer is (x).</p>
+        <p>Hmmm...not quite</p>
         <p>Better luck next time.</p>
       </div>`,
 
   `
       <div class="playSlide answerEffect" id="loser2">
         <img src="loserEffect/2.gif" class="img-responsive center-block" alt="winner1">
-        <p>Nope. The correct answer is (x).</p>
+        <p>Nope.</p>
         <p>10 pushups please.</p>
       </div>`,
 
   `
       <div class="playSlide answerEffect" id="loser3">
         <img src="loserEffect/3.gif" class="img-responsive center-block" alt="winner1">
-        <p>The right answer is (x).</p>
-        <p>I don't get it!!</p>
+        <p>Come on, seriously?</p>
+        <p>It wasn't that hard!!!</p>
       </div>`
 ]
 
@@ -130,6 +130,8 @@ const findHomePageDecks = (cb) => {
     method: "GET",
     url: `/api/decks`
   }).done((decks) => {
+    console.log(`decks`)
+    console.log(decks)
     cb(decks)
   })
 }
@@ -195,29 +197,29 @@ function checkAnswerWith() {
     if (e.target.id == '') {
       return
     }
-    let $theSlide = $(`#${e.target.id}`).closest('.playSlide')
-    let theSlideContent = $(`#${e.target.id}`).closest('.playSlide').html()
+    let $selectedID = $(`#${e.target.id}`)
+    let $theSlide = $selectedID.closest('.playSlide')
+    let $rightButton = $theSlide.find('[data-answer=true]')
+    $rightButton.text('Correct answer')
+    let theSlideContent = $selectedID.closest('.playSlide').html()
     if (e.target.dataset.answer === "true") {
       scoreObj.correctAnswerCount += 1
       count1 = (count1 === 2 ? 0 : ++count1)
       $theSlide.html(htmlWinner[count1]).scrollTop(200)
-      setTimeout(() => {
-        $theSlide.html(theSlideContent)
-        $theSlide.find("button").attr("disabled", "disabled")
-        $theSlide.addClass('greyOut')
-      }, 3000);
-
 
     } else {
       count2 = (count2 === 2 ? 0 : ++count2)
       $theSlide.html(htmlloser[count2])
-      setTimeout(() => {
-        $theSlide.html(theSlideContent)
-        $theSlide.find("button").attr("disabled", "disabled")
-        $theSlide.addClass('greyOut')
-      }, 3000);
     }
-    // $theSlide.
+    setTimeout(() => {
+      $theSlide.html(theSlideContent)
+      let $slideButtons = $theSlide.find('button')
+      $slideButtons.attr("disabled", "disabled")
+      $slideButtons.addClass('greyOut')
+      $('.scoreButton').removeAttr('disabled')
+      $('.scoreButton').removeClass('greyOut')
+    }, 3000);
+
 
   }
 }
@@ -227,7 +229,7 @@ function checkAnswerWith() {
 // save a deck to the database
 // need to create an object that matches the format below
 // the object will be passed to the route and parsed before saving in database
-$(() => {
+/*$(() => {
   let newDeck = {};
   newDeck.name = "Basketball Stars";
   newDeck.userId = 1;
@@ -271,10 +273,29 @@ $(() => {
     datatype: 'json'
   })
 })
-
+*/
 
 // save score data for a single play and return world score information
-$(() => {
+
+function getWorldScore(scoreObj) {
+
+  $.ajax({
+    method: "POST",
+    url: `/api/score`,
+    data: scoreObj,
+    datatype: 'json'
+  }).done((score) => {
+    score.playCount
+    score.worldScoreAverage
+    score.userScore
+    let message = `Most people got ${score.worldScoreAverage} right answers. \n You got ${score.userScore} right answers.`
+    $('.category').show()
+
+
+  });
+}
+
+/*$(() => {
   let scoreObj = {};
   scoreObj.userId = 1;
   scoreObj.deckId = 1;
@@ -293,7 +314,7 @@ $(() => {
 
 
 
-
+*/
 
 
 // });
