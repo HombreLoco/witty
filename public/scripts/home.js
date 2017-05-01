@@ -44,29 +44,45 @@ $(document).ready(function() {
       </div>`
   ]
 
-  const highScore = [
-    `      <div class="playSlide answerEffect" id="scoreHight1">
-        <img src="scoreHigh/yoda.gif" class="img-responsive center-block" alt="winner1">
-        <p>Power you have become, the dark side I sense in you.</p>
-      </div>`,
+  const highScore = [{
+    makeHTML: function(percentage) {
+      return `<div class="playSlide answerEffect" id="scoreHight1">
+               <img src="scoreHigh/yoda.gif" class="img-responsive center-block" alt="winner1">
+                 <p>You scored ${percentage}%.</p>
+               <p>Power you have become, the dark side I sense in you.</p>
+             </div>`
+    }
 
-    `      <div class="playSlide answerEffect" id="scoreHight2">
+  }, {
+
+    makeHTML: function(percentage) {
+      return `<div class="playSlide answerEffect" id="scoreHight2">
         <img src="scoreHigh/firework.gif" class="img-responsive center-block" alt="winner1">
+        <p>You scored ${percentage}%.</p>
         <p>Excellent. Congratulations!!</p>
       </div>`
-  ]
+    }
+  }]
 
-  const lowScore = [
-    `      <div class="playSlide answerEffect" id="lowScore1">
-        <img src="loserEffect/giphy.gif" class="img-responsive center-block" alt="winner1">
+  const lowScore = [{
+    makeHTML: function(percentage) {
+      return `<div class="playSlide answerEffect" id="lowScore1">
+        <img src="scoreLow/giphy.gif" class="img-responsive center-block" alt="winner1">
+                <p>You scored ${percentage}%.</p>
         <p>Chin up. You just need a bit more practice.</p>
 
-      </div>`,
-    `      <div class="playSlide answerEffect" id="lowScore2">
-        <img src="loserEffect/rain.gif" class="img-responsive center-block" alt="winner1">
-        <p>Get up and try again!</p>
+
       </div>`
-  ]
+    }
+  }, {
+    makeHTML: function(percentage) {
+      return `<div class="playSlide answerEffect" id="lowScore2">
+            <img src="scoreLow/rain.gif" class="img-responsive center-block" alt="winner1">
+                    <p>You scored ${percentage}%.</p>
+            <p>Get up and try again!</p>
+          </div>`
+    }
+  }]
 
   const scoreObj = {
     userId: 0,
@@ -327,26 +343,30 @@ $(document).ready(function() {
         scoreObj.playCount
         scoreObj.worldScoreAverage
         scoreObj.userScore
-        let percentage = Math.round((scoreObj.correctAnswerCount / 3)) * 100
+        let percentage = Math.round((scoreObj.correctAnswerCount / 3) * 100)
         let resultHTML = ''
-        if (percentage > 0) {
-          resultHTML = `<div class="playSlide answerEffect" id="scoreHight1">
-        <img src="scoreHigh/yoda.gif" class="img-responsive center-block" alt="winner1">
-        <p>You scored ${percentage}%.</p>
-        <p>Power you have become, the dark side I sense in you.</p>
-      </div>`
+        if (percentage > 50) {
+          count3 = (count3 === 1 ? 0 : ++count3)
+          resultHTML = highScore[count3].makeHTML(percentage)
+            /*  `<div class="playSlide answerEffect" id="scoreHight1">
+                    <img src="scoreHigh/yoda.gif" class="img-responsive center-block" alt="winner1">
+                    <p>You scored ${percentage}%.</p>
+                    <p>Power you have become, the dark side I sense in you.</p>
+                  </div>`*/
 
-        } else if (percentage <= 0) {
-          resultHTML =
- `      <div class="playSlide answerEffect" id="lowScore1">
-        <img src="scoreLow/giphy.gif" class="img-responsive center-block" alt="winner1">
-                <p>You scored ${percentage}%.</p>
-        <p>Chin up. You just need a bit more practice.</p>
+        } else if (percentage <= 50) {
+          count4 = (count4 === 1 ? 0 : ++count4)
+          resultHTML = lowScore[count4].makeHTML(percentage)
+            /* `      <div class="playSlide answerEffect" id="lowScore1">
+                    <img src="scoreLow/giphy.gif" class="img-responsive center-block" alt="winner1">
+                            <p>You scored ${percentage}%.</p>
+                    <p>Chin up. You just need a bit more practice.</p>
 
-      </div>`
+                  </div>`*/
         }
-        console.log(resultHTML)
         console.log(`percentage: ${percentage}`)
+        console.log(`score: ${scoreObj.correctAnswerCount}`)
+        scoreObj.correctAnswerCount = 0
         $theDeck.html(resultHTML)
         setTimeout(() => {
           $theDeck.hide()
