@@ -1,10 +1,10 @@
 exports.up = function(knex, Promise) {
-return CreateUserDeckScoreTable()
-.then(CreateUserTable)
-.then(CreateAnswerTable)
-.then(CreateGenreTable)
-.then(CreateDeckTable)
-.then(CreateSlidesTable);
+// return CreateUserDeckScoreTable()
+// .then(CreateUserTable)
+// // .then(CreateSlidesTable)
+// .then(CreateGenreTable)
+// .then(CreateDeckTable)
+return CreateAnswerTable();
 
 
   function CreateUserDeckScoreTable() {
@@ -82,12 +82,12 @@ return CreateUserDeckScoreTable()
 
 
 exports.down = function(knex, Promise) {
-  return dropSlides()
-  .then(dropDeck)
-  .then(dropGenre)
-  .then(dropAnswer)
-  .then(dropUsers)
-  .then(dropUserDeckScore);
+  return dropAnswer();
+  // .then(dropDeck)
+  // .then(dropGenre)
+  // .then(dropSlides)
+  // .then(dropUsers)
+  // .then(dropUserDeckScore);
 
   function dropSlides() {
     return knex.schema.dropTableIfExists('slides')
