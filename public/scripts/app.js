@@ -59,7 +59,7 @@ const htmlloser = [`
       </div>`
 ]
 
-const $scoreButton = `<button class="btn btn-info btn-lg scoreButton">Get World Score</button>`
+const $theDeck = $('.theDeck')
 
 const scoreObj = {
   userId: 0,
@@ -69,6 +69,9 @@ const scoreObj = {
 
 let count1 = -1
 let count2 = -1
+
+const $scoreButton = `<button class="btn btn-info btn-lg scoreButton">Get Score</button>`
+
 
 function createSlide(slides) {
   return `<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -104,9 +107,8 @@ function createSlide(slides) {
             </div>`
 }
 
-
 function renderSlides(deck) {
-  $theDeck = $('.theDeck')
+
   let deckName = `<header>
           <h1 class="col-xs-12 col-md-12 col-lg-12 text-primary bg-primary playTitle">${deck.name}</h1>
         </header>`;
@@ -146,50 +148,7 @@ function findThatOneDeck(deckID) {
   });
 }
 
-/*$(() => {
-  $.ajax({
-    method: "GET",
-    url: `/api/decks`
-  }).done((decks) => {
-    console.log(decks);
-    for (deck of decks) {
 
-    }
-  })
-});*/
-
-
-// load a single deck from the database
-
-/*  $(() => {
-    let deckIDID = 1;
-<<<<<<< HEAD
-=======
-    // let deckIDID = 43;
->>>>>>> Keawe_Sunday
-    $.ajax({
-      method: "GET",
-      url: `/api/decks/${deckIDID}`
-    }).done((deck) => {
-      renderSlides(deck);
-    });
-  });
-*/
-
-
-//Event listener for the buttons on slides
-/*$(".theDeck").on("click", function(e) {
-  event.stopPropagation();
-  if (e.target.id == '') {
-    return
-  }
-  if (e.target.dataset.answer === "true") {
-    alert("Corrrect Answer!" + 'clicked id: ' + e.target.id);
-  } else {
-    alert("Wrong Answer :(");
-  }
-})
-*/
 function checkAnswerWith() {
 
   return function(e) {
@@ -202,10 +161,11 @@ function checkAnswerWith() {
     let $rightButton = $theSlide.find('[data-answer=true]')
     $rightButton.text('Correct answer')
     let theSlideContent = $selectedID.closest('.playSlide').html()
+
     if (e.target.dataset.answer === "true") {
       scoreObj.correctAnswerCount += 1
       count1 = (count1 === 2 ? 0 : ++count1)
-      $theSlide.html(htmlWinner[count1]).scrollTop(200)
+      $theSlide.html(htmlWinner[count1]).scrollTop(100)
 
     } else {
       count2 = (count2 === 2 ? 0 : ++count2)
@@ -219,8 +179,6 @@ function checkAnswerWith() {
       $('.scoreButton').removeAttr('disabled')
       $('.scoreButton').removeClass('greyOut')
     }, 3000);
-
-
   }
 }
 
@@ -277,24 +235,22 @@ function checkAnswerWith() {
 
 // save score data for a single play and return world score information
 
-function getWorldScore(scoreObj) {
+function getWorldScoreWith(scoreObj) {
+console.log(`Hello World!`)
+    return function () {
 
-  $.ajax({
+    $('.theDeck').hide()
+    $('.category').show()
+    scoreObj.playCount
+    scoreObj.worldScoreAverage
+    scoreObj.userScore
+    let message = `Most people got ${scoreObj.worldScoreAverage} right answers. \n You got ${scoreObj.userScore} right answers.`
+/*  $.ajax({
     method: "POST",
     url: `/api/score`,
     data: scoreObj,
     datatype: 'json'
-  }).done((score) => {
-    score.playCount
-    score.worldScoreAverage
-    score.userScore
-    let message = `Most people got ${score.worldScoreAverage} right answers. \n You got ${score.userScore} right answers.`
-    $('.category').show()
-
-
-  });
-}
-
+  }).done((score) => {*/
 /*$(() => {
   let scoreObj = {};
   scoreObj.userId = 1;
@@ -308,13 +264,14 @@ function getWorldScore(scoreObj) {
     datatype: 'json'
   }).done((score) => {
     console.log("score: ", score);
-  });
-});
-
-
-
-
 */
+  }
+
+}
+
+
+
+
 
 
 // });

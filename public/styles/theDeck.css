@@ -1,7 +1,7 @@
 /* M-a-k-e  D-e-c-k */
 
 .theDeck {
-  display: none;
+    display: none;
     position: relative;
     top: -1.4em;
     overflow: auto;
@@ -141,7 +141,6 @@
     position: relative;
 }
 
-
 .answerEffect .img-responsive {
     max-width: 50%
 }
@@ -154,12 +153,14 @@
 }
 
 .scoreButton {
+
     position: relative;
 }
 
 .greyOut {
-  opacity: .5;
+    opacity: .5;
 }
+
 
 /****** S-c-r-e-e-n-s *****/
 
@@ -192,7 +193,7 @@
         overflow: auto;
         opacity: .9;
         top: 40px;
-        font-size: 1em;
+        font-size: 1.25em;
         padding-right: 1.5em;
         width: 100%;
         left: 1em;
@@ -292,11 +293,12 @@
         padding-right: 3%;
     }
     .playTitileAffix {
-        font-size: 1.25em;
+        font-size: 1.75em;
         width: 100%;
+        padding-top: 3.5%;
         top: 28px;
-        height: 7%;
-        left: .75em;
+        height: 6%;
+        left: .6em;
     }
     .theSlide {
         height: 29.25em;
@@ -371,10 +373,11 @@
     }
     .playTitileAffix {
         position: fixed;
-        font-size: 1.25em;
+        font-size: 1.75em;
         padding-right: 1em;
+        height: 3em;
         width: 100%;
-        left: .75em;
+        left: .5em;
     }
     /* p-l-a-y q-u-e-s-t-i-o-n */
     .playSlide h4 {
@@ -395,47 +398,51 @@
         width: 12em;
         bottom: 1.25em;
     }
+}
 
-        }
-    .scoreButton {
-        width: 15em;
-    }
+.scoreButton {
+    width: 15em;
 }
 
 
-/* L-a-r-g-e */
+}
 
+/* L-a-r-g-e */
 @media (min-width: 1196px) {
     .theSlide {
         height: 28.75em;
     }
     /* P-l-a-y  D-e-c-k */
+
     .playTitle {
         font-size: 3em;
         top: -.7em;
-2        padding-left: 3%;
+        padding-left: 3%;
         padding-top: .7em;
     }
+
     .playTitileAffix {
-        position: fixed;
         top: 48px;
-        font-size: 1.25em;
+        font-size: 1.5em;
         padding-right: 1em;
         width: 100%;
         height: 5%;
         left: .75em;
     }
     /* p-l-a-y q-u-e-s-t-i-o-n */
+
     .playSlide h4 {
         font-size: 3em;
         margin-bottom: 5%;
     }
+
     .correctAnswer button {
         border-radius: 1em;
         margin-bottom: .75em;
         margin-left: -.6em;
         margin-bottom: 2em;
     }
+
     .slideControl button {
         position: relative;
         left: 2.5em;
@@ -443,13 +450,12 @@
         margin-top: .5em;
         bottom: 1.75em;
     }
-
-        }
-    .scoreButton {
-        width: 18em;
-    }
+}
+.scoreButton {
+    width: 18em;
 }
 
+}
 @media (min-width: 1870px) {
     .slideControl button {
         position: relative;
@@ -473,17 +479,16 @@
     .playTitle {
         font-size: 4em;
         padding-left: 3%;
-    margin-top: 0%;
-
+        margin-top: 0%;
         padding-top: .7em;
-        min-height: 3em;
+        max-height: 2em;
     }
     .playTitileAffix {
         position: fixed;
         top: 46px;
         font-size: 2em;
         padding-right: 1em;
-        height: 2%;
+        height: 4%;
         width: 100%;
         left: .75em;
     }
@@ -500,7 +505,6 @@
         margin-top: 1%;
         margin-bottom: 2%;
     }
-
-        }
+}
 
 }
