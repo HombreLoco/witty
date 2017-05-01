@@ -214,7 +214,7 @@ function checkAnswerWith() {
         $theSlide.addClass('greyOut')
       }, 3000);
     }
-    $theSlide.
+    // $theSlide.
 
   }
 }
