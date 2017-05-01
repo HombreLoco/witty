@@ -327,22 +327,31 @@ $(document).ready(function() {
         scoreObj.playCount
         scoreObj.worldScoreAverage
         scoreObj.userScore
-        let percentage = Math.round((scoreObj.userScore / 3)) * 100
-console.log(percentage)
-console.log(scoreObj.userScore)
-        if(percentage) {
-          let resultHTML = `<div class="playSlide answerEffect" id="scoreHight1">
+        let percentage = Math.round((scoreObj.correctAnswerCount / 3)) * 100
+        let resultHTML = ''
+        if (percentage > 0) {
+          resultHTML = `<div class="playSlide answerEffect" id="scoreHight1">
         <img src="scoreHigh/yoda.gif" class="img-responsive center-block" alt="winner1">
         <p>You scored ${percentage}%.</p>
         <p>Power you have become, the dark side I sense in you.</p>
       </div>`
 
+        } else if (percentage <= 0) {
+          resultHTML =
+ `      <div class="playSlide answerEffect" id="lowScore1">
+        <img src="scoreLow/giphy.gif" class="img-responsive center-block" alt="winner1">
+                <p>You scored ${percentage}%.</p>
+        <p>Chin up. You just need a bit more practice.</p>
+
+      </div>`
         }
+        console.log(resultHTML)
+        console.log(`percentage: ${percentage}`)
         $theDeck.html(resultHTML)
         setTimeout(() => {
           $theDeck.hide()
           $category.show()
-        }, 3000);
+        }, 5000);
       } // end of score
     }
   }
