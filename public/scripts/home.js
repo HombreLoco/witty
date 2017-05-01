@@ -13,35 +13,49 @@ $(document).ready(function() {
 
   ]
 
-
+  const score = []
 
   // sticky menu
-  const $playTitle = $('.playTitle')
   const $navbar = $('.navbar')
   const $win = $(window)
-  const stickyMenu = stickyMenuWith($playTitle, $navbar)
-  const $main = $('main')
+  const $category = $('.category')
+  const stickyMenu = stickyMenuWith($navbar)
+  const $theDeck = $('.theDeck')
+
   $win.on('scroll', stickyMenu)
 
 
-  // home page
+  // home page - put all the deck thumbs and text on page
   const $cat1 = $('#cat1')
-  makeDeckThumbs($cat1, decks)
-  loadDeck = loadDeckWith($main)
+  findHomePageDecks(decks => makeDeckThumbs($cat1, decks))
+
   // choice a deck to play
-  $main.on('click', loadDeck)
+  const scoreObj = {
+    userId: 0,
+    deckId: 0,
+    correctAnswerCount: 0
+  }
 
+  const loadTheDeck = getTheDeckWith($category)
+  $category.on('click', loadTheDeck)
 
+  // Play the deck
+  const checkAnswer = checkAnswerWith()
+  $theDeck.on('click', checkAnswer)
 
 
   // ********local functions*******
 
-  function loadDeckWith($main) {
+
+  function getTheDeckWith($category) {
     return function(e) {
-      console.log(e.target)
-      alert(`Please give me the deck with id: ${e.target.id}`)
+      if (!e.target.id) {
+        return
+      }
+      findThatOneDeck(e.target.id)
     }
   }
+
 
   function makeDeckThumbs($cat1, decks) {
 
@@ -62,7 +76,7 @@ $(document).ready(function() {
 
   }
 
-  function stickyMenuWith($playTitle, $navbar) {
+  function stickyMenuWith($navbar) {
 
     return function(eve) {
       let isnabarFixed = ($navbar.css('position') == 'fixed')
@@ -79,11 +93,11 @@ $(document).ready(function() {
       }
       if ($(this).scrollTop() > spyPoint && !isnabarFixed) {
         $navbar.addClass('navbarAffix')
-        $playTitle.addClass('playTitileAffix')
+        $('.playTitle').addClass('playTitileAffix')
 
       }
       if ($(this).scrollTop() < spyPoint && isnabarFixed) {
-        $playTitle.removeClass('playTitileAffix')
+        $('.playTitle').removeClass('playTitileAffix')
         $navbar.removeClass('navbarAffix')
       }
     }

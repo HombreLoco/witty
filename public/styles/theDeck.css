@@ -1,8 +1,9 @@
 /* M-a-k-e  D-e-c-k */
 
 .theDeck {
+  display: none;
     position: relative;
-    top: -3em;
+    top: -1.4em;
     overflow: auto;
     margin-left: 8%;
     margin-right: 8%;
@@ -34,6 +35,7 @@
     font-size: 2em;
     width: 100%;
     z-index: 1;
+    margin-top: 0;
     margin-bottom: 1%;
     border-bottom-left-radius: 1em;
     border-bottom-right-radius: 1em;
@@ -139,11 +141,12 @@
     position: relative;
 }
 
-.winner .img-responsive {
+
+.answerEffect .img-responsive {
     max-width: 50%
 }
 
-.winner p {
+.answerEffect p {
     position: relative;
     font-family: 'Baloo', cursive;
     font-size: 300%;
@@ -154,6 +157,9 @@
     position: relative;
 }
 
+.greyOut {
+  opacity: .5;
+}
 
 /****** S-c-r-e-e-n-s *****/
 
@@ -176,7 +182,6 @@
     /* P-l-a-y  D-e-c-k */
     .playTitle {
         position: static;
-        margin-top: 6%;
         padding-top: 5%;
         padding-bottom: 4%;
         padding-left: 5%;
@@ -186,7 +191,7 @@
         position: fixed;
         overflow: auto;
         opacity: .9;
-        top: 26px;
+        top: 40px;
         font-size: 1em;
         padding-right: 1.5em;
         width: 100%;
@@ -260,9 +265,8 @@
         border-bottom-left-radius: .75em;
     }
     .scoreButton {
-        margin-left: 5%;
         margin-top: 10%;
-        width: 90%;
+        margin-left: -5%;
     }
 }
 
@@ -282,7 +286,6 @@
     /* P-l-a-y  D-e-c-k */
     .playTitle {
         font-size: 3em;
-        margin-top: 3%;
         padding-top: 3%;
         padding-bottom: 2%;
         padding-left: 3%;
@@ -344,7 +347,7 @@
         border-bottom-left-radius: .5em;
     }
     .scoreButton {
-        right: 5%;
+        width: 15em;
     }
 }
 
@@ -361,7 +364,6 @@
         overflow: auto;
         font-size: 3em;
         width: 100%;
-    margin-top: 2%;
         padding-top: 5%;
         padding-bottom: 4%;
         padding-left: 5%;
@@ -393,6 +395,11 @@
         width: 12em;
         bottom: 1.25em;
     }
+
+        }
+    .scoreButton {
+        width: 15em;
+    }
 }
 
 
@@ -406,14 +413,12 @@
     .playTitle {
         font-size: 3em;
         top: -.7em;
-    margin-top: 1.5%;
-
-        padding-left: 3%;
+2        padding-left: 3%;
         padding-top: .7em;
     }
     .playTitileAffix {
         position: fixed;
-        top: 32px;
+        top: 48px;
         font-size: 1.25em;
         padding-right: 1em;
         width: 100%;
@@ -437,6 +442,11 @@
         width: 14em;
         margin-top: .5em;
         bottom: 1.75em;
+    }
+
+        }
+    .scoreButton {
+        width: 18em;
     }
 }
 
@@ -463,17 +473,17 @@
     .playTitle {
         font-size: 4em;
         padding-left: 3%;
-    margin-top: 1%;
+    margin-top: 0%;
 
         padding-top: .7em;
         min-height: 3em;
     }
     .playTitileAffix {
         position: fixed;
-        top: 32px;
-        font-size: 1.25em;
+        top: 46px;
+        font-size: 2em;
         padding-right: 1em;
-        height: 5%;
+        height: 2%;
         width: 100%;
         left: .75em;
     }
@@ -490,4 +500,7 @@
         margin-top: 1%;
         margin-bottom: 2%;
     }
+
+        }
+
 }

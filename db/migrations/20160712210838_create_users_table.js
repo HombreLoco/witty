@@ -1,10 +1,10 @@
 exports.up = function(knex, Promise) {
 return CreateUserDeckScoreTable()
 .then(CreateUserTable)
-.then(CreateAnswerTable)
 .then(CreateGenreTable)
 .then(CreateDeckTable)
-.then(CreateSlidesTable);
+.then(CreateSlidesTable)
+.then(CreateAnswerTable);
 
 
   function CreateUserDeckScoreTable() {
