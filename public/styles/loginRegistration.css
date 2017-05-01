@@ -1,0 +1,39 @@
+#loginForm {
+  background-color: #eee;
+  width: 400px;
+  margin-left: 10px;
+  padding: 10px;
+  display: none;
+}
+
+#regForm {
+  background-color: #eee;
+  width: 400px;
+  margin-left: 10px;
+  padding: 10px;
+  display: none;
+}
+
+#loginError {
+  margin-left: 20px;
+}
+
+#regError {
+  margin-left: 20px;
+}
+
+.btn-logout {
+  width: 100%;
+  padding: 3px 15px !important;
+  text-align: left !important;
+  text-decoration: none !important;
+  font-size: 1.05em;
+  outline-color: transparent;
+  outline-style: none;
+}
+
+#facebookMedButton {
+  display: block;
+  margin: 10px 0 10px 20px;
+
+}

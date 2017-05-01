@@ -11,7 +11,6 @@ module.exports = (knex) => {
   router.get("/", (req, res) => {
     knex.select("deck.name", "deck.id", "deck.pictureUrl").from("deck").orderByRaw("RANDOM()").limit(3)
     .then((results) => {
-      console.log("results", results);
       res.json(results);
     })
   });
@@ -47,34 +46,13 @@ module.exports = (knex) => {
         answers.forEach(function(answerValue, answerIndex) {
           if (slideValue.slideAnswerId === answerValue.slideAnswerId) {
             answerValue.correctAnswer = answerValue.correctAnswer.toString();
-            console.log("correct: ", typeof answerValue.correctAnswer);
             fullDeck.slides[slideIndex].answers.push(answerValue);
           }
         })
       })
-      console.log(fullDeck);
-      renderSlides(fullDeck);
       res.json(fullDeck);
     })
   });
-
-  function renderSlides(deck) {
-  // let ans = [];
-  // let corAns = [];
-  // let pic = [];
-  // let ques = [];
-  for (var i = 0; i < deck.slides.length; i++) {
-    var o = deck.slides[i];
-    console.log("OOOOOOOOOOO: ", o)
-    // createSlide(o);
-    //   pic.push(deck.slides[i].pictureURL);
-    //   ques.push(deck.slides[i].question);
-    // for (var x = 0; x < o.answers.length; x++) {
-    //   ans = o.answers[x].answer;
-    //   corAns = o.answers[x].correctAnswer;
-    // }
-  }
-}
 
 
   // save a new deck to the database
