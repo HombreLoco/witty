@@ -1,19 +1,124 @@
-// $( document ).ready(function() {
-//     console.log( "ready!" );
 
-// get all users from
-// $(() => {
-//   $.ajax({
-//     method: "GET",
-//     url: "/api/users"
-//   }).done((users) => {
-//     for(user of users) {
-//       $("<div>").text(user.firstname).appendTo($("body"));
-//       $("<div>").text(user.lastname).appendTo($("body"));
-//       $("<br>").appendTo($("body"));
-//     }
-//   });
-// });
+  //toggle nav elements display after login
+  function renderElementsOnLogin() {
+    $("#createNav").css("display", "inline");
+    $("#logoutNav").css("display", "inline");
+    $("#loginNav").css("display", "none");
+    $("#registerNav").css("display", "none");
+  }
+
+  //toggle nav elements display after logout
+  function renderElementsOnLogout() {
+    $("#createNav").css("display", "none");
+    $("#logoutNav").css("display", "none");
+    $("#loginNav").css("display", "inline");
+    $("#registerNav").css("display", "inline");
+  }
+
+  // check if user is logged in on page load and dynamically renders
+  // page elements depending on status
+  $(() => {
+    $.ajax({
+      method: "GET",
+      url: `/api/users`
+    }).done((user) => {
+      if (!user.userId || !user.firstname) {
+        renderElementsOnLogout();
+      } else {
+        renderElementsOnLogin();
+      }
+    });
+  });
+
+  // event for when user submits registration form
+  $("#regForm").on("submit", function(event) {
+    let formData = $("#regForm").serialize()
+    event.preventDefault();
+    if ($("#firstname").val() === "" || $("#lastname").val() === "" || $("#email").val() === "" || $("#password").val() === "") {
+      $("#regError").text(results.error).css("color", "red").fadeIn().delay(5000).fadeOut();
+    } else {
+      $.ajax({
+        method: "POST",
+        url: `/api/users/register`,
+          data: formData
+      })
+      .done((results) => {
+        if (results.error) {
+          renderElementsOnLogout();
+          $("#regError").text(results.error).css("color", "red").fadeIn().delay(5000).fadeOut();
+        } else {
+          renderElementsOnLogin();
+        }
+      });
+    }
+  });
+
+  // event for when user submits login form
+  $("#loginForm").on("submit", function(event) {
+    let formData = $("#loginForm").serialize();
+    event.preventDefault();
+    if ($("#loginemail").val() === "" || $("#loginpassword").val() === "") {
+      $("#loginError").text("Fields cannot be empty").css("color", "red").fadeIn().delay(5000).fadeOut();
+    } else {
+      $.ajax({
+        method: "POST",
+        url: `/api/users/login`,
+        data: formData
+      })
+      .done((results) => {
+        if (results.error) {
+          renderElementsOnLogout();
+          $("#loginError").text(results.error).css("color", "red").fadeIn().delay(5000).fadeOut();
+        } else {
+          renderElementsOnLogin();
+        }
+      });
+    }
+  });
+
+  //event to toggle login form within navbar
+  $("#loginNav a").on("click", function(event) {
+    event.preventDefault();
+    var formView = $("#loginForm");
+    if ($("#regForm").is(":visible")) {
+      $("#regForm").hide();
+    }
+    if (formView.is(":visible")) {
+      formView.slideUp( "slow" );
+    } else {
+      formView.slideDown( "slow" );
+    }
+  })
+
+  //event to toggle registration form within navbar
+  $("#registerNav a").on("click", function(event) {
+    event.preventDefault();
+    var formView = $("#regForm");
+    if ($("#loginForm").is(":visible")) {
+      $("#loginForm").hide();
+    }
+    if (formView.is(":visible")) {
+      formView.slideUp( "slow" );
+    } else {
+      formView.slideDown( "slow" );
+    }
+  })
+
+  $("#logoutNav").on("click", function(event) {
+    $.ajax({
+      method: "POST",
+      url: `/api/users/logout`,
+      success: function() {
+        FB.logout(function(response) {
+          // Person is now logged out
+        });
+        location.reload();
+      }
+    })
+  })
+
+
+  // create HTML markup for individual slide data
 
 const htmlWinner = [`
       <div class="answerEffect" id="winner1">
@@ -107,6 +212,7 @@ function createSlide(slides) {
             </div>`
 }
 
+<<<<<<< HEAD
 function renderSlides(deck) {
 
   let deckName = `<header>
@@ -117,16 +223,27 @@ function renderSlides(deck) {
     var o = deck.slides[i];
     let newSlide = createSlide(o);
     $theDeck.append(newSlide);
+=======
+
+  // loop through individual slides and pass to HTML rendering function
+  function renderSlides(deck) {
+    let deckName = `<header>
+                    <h1 class="col-xs-12 col-md-12 col-lg-12 text-primary bg-primary playTitle">${deck.name}</h1>
+                    </header>`;
+    $(".theDeck").append(deckName);
+    deck.slides.forEach(function(value, index) {
+      let newSlide = createSlide(value);
+      $(".theDeck").append(newSlide);
+    })
+    $(".theDeck").find(':last').after($scoreButton)
+    $(".theDeck").show()
+    $('.category').hide()
+>>>>>>> 5ce38631849cd3899229e198e902af262db2bf99
   }
-  $theDeck.find(':last').after($scoreButton)
-  $theDeck.show()
-  $('.category').hide()
-}
 
 
 
 // function to get the decks from the db
-
 const findHomePageDecks = (cb) => {
   $.ajax({
     method: "GET",
@@ -149,6 +266,21 @@ function findThatOneDeck(deckID) {
 }
 
 
+<<<<<<< HEAD
+=======
+  // save a deck to the database
+  // need to create an object that matches the format below
+  // the object will be passed to the route and parsed before saving in database
+  // $(() => {
+  //   $.ajax({
+  //     method: "POST",
+  //     url: `/api/decks`,
+  //     data: newDeck,
+  //     datatype: 'json'
+  //   })
+  // })
+
+>>>>>>> 5ce38631849cd3899229e198e902af262db2bf99
 function checkAnswerWith() {
 
   return function(e) {
@@ -165,8 +297,12 @@ function checkAnswerWith() {
     if (e.target.dataset.answer === "true") {
       scoreObj.correctAnswerCount += 1
       count1 = (count1 === 2 ? 0 : ++count1)
+<<<<<<< HEAD
       $theSlide.html(htmlWinner[count1]).scrollTop(100)
 
+=======
+      $theSlide.html(htmlWinner[count1]).scrollTop(200)
+>>>>>>> 5ce38631849cd3899229e198e902af262db2bf99
     } else {
       count2 = (count2 === 2 ? 0 : ++count2)
       $theSlide.html(htmlloser[count2])
@@ -183,7 +319,10 @@ function checkAnswerWith() {
 }
 
 
+  // save score data for a single play and return world score information
+  function getWorldScore(scoreObj) {
 
+<<<<<<< HEAD
 // save a deck to the database
 // need to create an object that matches the format below
 // the object will be passed to the route and parsed before saving in database
@@ -275,3 +414,18 @@ console.log(`Hello World!`)
 
 
 // });
+=======
+    $.ajax({
+      method: "POST",
+      url: `/api/score`,
+      data: scoreObj,
+      datatype: 'json'
+    }).done((score) => {
+      score.playCount
+      score.worldScoreAverage
+      score.userScore
+      let message = `Most people got ${score.worldScoreAverage} right answers. \n You got ${score.userScore} right answers.`
+      $('.category').show();
+    });
+  }
+>>>>>>> 5ce38631849cd3899229e198e902af262db2bf99

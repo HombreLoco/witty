@@ -80,3 +80,20 @@
     }
 
 }
+
+#registerNav {
+  display: inline;
+}
+
+#loginNav {
+  display: inline;
+}
+
+#logoutNav {
+  display: none;
+}
+
+#createNav {
+  display: none;
+}
+
